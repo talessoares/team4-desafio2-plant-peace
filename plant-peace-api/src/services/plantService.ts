@@ -26,6 +26,7 @@ export const createPlant = async (plant: IPlant): Promise<IPlant | Error> => {
   try {
     const existingPlant = await verifyIfPlantExists(plant.id);
     if (existingPlant) {
+      console.log("failed to create plant, plant already exists");
       throw new Error(`Plant with ID ${plant.id} already exists`);
     }
 
