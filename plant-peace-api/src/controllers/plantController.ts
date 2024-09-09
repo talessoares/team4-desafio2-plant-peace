@@ -1,6 +1,6 @@
 // src/controllers/plantController.ts
 import { Request, Response } from 'express';
-import { getPlants, createPlant } from '../services/plantService';
+import { getPlants, createPlant, deletePlant, updatePlant, getPlant } from '../services/plantService';
 import { IPlant } from '../models/plant';
 
 export const getAllPlants = async (req: Request, res: Response): Promise<void> => {
@@ -42,4 +42,54 @@ export const addPlant = async (req: Request, res: Response): Promise<void> => {
     }
   }
 };
+
+
+//delete plant
+export const deletePlantHandler = async (req: Request, res: Response): Promise<void> => {
+  console.log('deletePlant controller');
+  try {
+    const plantId = parseInt(req.params.id);
+    console.log('plantId', plantId);
+    const deletedPlant = await deletePlant(plantId);
+    res.json(deletedPlant);
+  } catch (error) {
+    if (error instanceof Error) {
+      res.status(400).json({ message: error.message });
+    } else {
+      res.status(400).json({ message: 'An unknown error occurred' });
+    }
+  }
+};
+
+
+export const updatePlantHandler = async (req: Request, res: Response): Promise<void> => {
+  console.log('updatePlant controller');
+  try {
+    const plantId = parseInt(req.params.id);
+    const updatedPlant = await updatePlant(plantId, req.body);
+    res.json(updatedPlant);
+  } catch (error) {
+    if (error instanceof Error) {
+      res.status(400).json({ message: error.message });
+    } else {
+      res.status(400).json({ message: 'An unknown error occurred' });
+    }
+  }
+}
+
+//find one
+export const getPlantHandler = async (req: Request, res: Response): Promise<void> => {
+  console.log('getPlant controller');
+  try {
+    const plantId = parseInt(req.params.id);
+    const plant = await getPlant(plantId);
+    res.json(plant);
+  } catch (error) {
+    if (error instanceof Error) {
+      res.status(400).json({ message: error.message });
+    } else {
+      res.status(400).json({ message: 'An unknown error occurred' });
+    }
+  }
+}
 

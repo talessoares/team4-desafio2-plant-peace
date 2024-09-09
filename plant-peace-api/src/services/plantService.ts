@@ -78,3 +78,22 @@ export const updatePlant = async (plantId: number, plant: IPlant): Promise<IPlan
     return error as Error; 
   }
 }
+
+export const getPlant = async (plantId: number): Promise<IPlant | Error> => {
+  console.log('getPlant service');
+  try {
+    const plant = verifyIfPlantExists(plantId);
+    if (!plant) {
+      throw new Error(`Plant with ID ${plantId} not found`);
+    }
+    const  foundPlant = await Plant.findOne({ id : plantId });
+    if (!foundPlant) {
+      throw new Error(`Plant with ID ${plantId} not found`);
+    }
+    return foundPlant;
+
+  } catch (error) {
+    handleError(error, 'get plant');
+    return error as Error; 
+  }
+}
