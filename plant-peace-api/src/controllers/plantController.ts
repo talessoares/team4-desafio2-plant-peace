@@ -81,7 +81,12 @@ export const updatePlantHandler = async (req: Request, res: Response): Promise<v
 export const getPlantHandler = async (req: Request, res: Response): Promise<void> => {
   console.log('getPlant controller');
   try {
-    const plantId = parseInt(req.params.id);
+    const plantId = parseInt(req.params.id, 10);
+    if (isNaN(plantId)) {
+      res.status(400).json({ message: 'Invalid plant ID' });
+      return;
+    }
+
     const plant = await getPlant(plantId);
     res.json(plant);
   } catch (error) {
@@ -91,5 +96,5 @@ export const getPlantHandler = async (req: Request, res: Response): Promise<void
       res.status(400).json({ message: 'An unknown error occurred' });
     }
   }
-}
+};
 

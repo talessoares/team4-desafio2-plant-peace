@@ -1,7 +1,7 @@
 import { log } from 'console';
 import Plant, { IPlant } from '../models/plant';
 
-
+// Função para lidar com erros
 const handleError = (error: unknown, action: string): void => {
   if (error instanceof Error) {
     throw new Error(`Failed to ${action}: ${error.message}`);
@@ -10,23 +10,22 @@ const handleError = (error: unknown, action: string): void => {
   }
 }
 
-export const getPlants = async (): Promise<IPlant[] | Error> => {
+export const getPlants = async (): Promise<IPlant[]> => {
   console.log('getPlants service');
   try {
     return await Plant.find();
   } catch (error) {
     handleError(error, 'get plants');
-    return error as Error; 
+    throw null;
   }
 };
 
-export const createPlant = async (plant: IPlant): Promise<IPlant | Error> => {
+export const createPlant = async (plant: IPlant): Promise<IPlant> => {
   console.log('createPlant service');
   console.log('plant', plant);
   try {
     const existingPlant = await verifyIfPlantExists(plant.id);
     if (existingPlant) {
-      console.log("failed to create plant, plant already exists");
       throw new Error(`Plant with ID ${plant.id} already exists`);
     }
 
@@ -34,7 +33,7 @@ export const createPlant = async (plant: IPlant): Promise<IPlant | Error> => {
     return await newPlant.save();
   } catch (error) {
     handleError(error, 'create plant');
-    return error as Error;
+    throw null;
   }
 };
 
@@ -46,15 +45,13 @@ export const verifyIfPlantExists = async (plantId: number): Promise<boolean> => 
     return !!plant;
   } catch (error) {
     handleError(error, 'verify if plant exists');
-    
-    return false;
+    return false; // Retorna false em caso de erro, mas isso pode ser ajustado conforme necessário
   }
 }
 
-export const deletePlant = async (plantId: number): Promise<IPlant | Error> => {
+export const deletePlant = async (plantId: number): Promise<IPlant> => {
   console.log('deletePlant service');
   try {
-    
     const deletedPlant = await Plant.findOneAndDelete({ id: plantId });
     if (!deletedPlant) {
       throw new Error(`Plant with ID ${plantId} not found`);
@@ -62,11 +59,11 @@ export const deletePlant = async (plantId: number): Promise<IPlant | Error> => {
     return deletedPlant;
   } catch (error) {
     handleError(error, 'delete plant');
-    return error as Error; 
+    throw null; 
   }
 }
 
-export const updatePlant = async (plantId: number, plant: IPlant): Promise<IPlant | Error> => {
+export const updatePlant = async (plantId: number, plant: IPlant): Promise<IPlant> => {
   console.log('updatePlant service');
   try {
     const updatedPlant = await Plant.findOneAndUpdate({ id: plantId }, plant, { new: true });
@@ -76,25 +73,24 @@ export const updatePlant = async (plantId: number, plant: IPlant): Promise<IPlan
     return updatedPlant;
   } catch (error) {
     handleError(error, 'update plant');
-    return error as Error; 
+    throw null;
   }
 }
 
-export const getPlant = async (plantId: number): Promise<IPlant | Error> => {
+export const getPlant = async (plantId: number): Promise<IPlant> => {
   console.log('getPlant service');
   try {
-    const plant = verifyIfPlantExists(plantId);
-    if (!plant) {
+    const exists = await verifyIfPlantExists(plantId);
+    if (!exists) {
       throw new Error(`Plant with ID ${plantId} not found`);
     }
-    const  foundPlant = await Plant.findOne({ id : plantId });
+    const foundPlant = await Plant.findOne({ id: plantId });
     if (!foundPlant) {
       throw new Error(`Plant with ID ${plantId} not found`);
     }
     return foundPlant;
-
   } catch (error) {
     handleError(error, 'get plant');
-    return error as Error; 
+    throw null; 
   }
 }
