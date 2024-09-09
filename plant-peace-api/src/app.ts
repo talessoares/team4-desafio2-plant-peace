@@ -11,5 +11,5 @@ app.use(express.json());
 connectDB();
 
 app.use('/api', plantRoutes);
-
+app.use(express.json());
 export default app;

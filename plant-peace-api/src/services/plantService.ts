@@ -1,29 +1,29 @@
-import { IPlant } from '../models/plant';
+import Plant, { IPlant } from '../models/plant';
 
-const plants: IPlant[] = [];
-
-export const getPlants = (): IPlant[] => {
-  return plants;
-};
-
-export const createPlant = (plant: IPlant): void => {
-  plants.push(plant);
-};
-
-export const getPlantById = (id: number): IPlant | undefined => {
-  return plants.find((plant) => plant.id === id);
-};
-
-export const updatePlant = (updatedPlant: IPlant): void => {
-  const index = plants.findIndex((plant) => plant.id === updatedPlant.id);
-  if (index !== -1) {
-    plants[index] = updatedPlant;
+export const getPlants = async (): Promise<IPlant[]> => {
+  console.log('getPlants service');
+  try {
+    return await Plant.find();
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(`Failed to get plants: ${error.message}`);
+    } else {
+      throw new Error('An unknown error occurred while retrieving plants');
+    }
   }
 };
 
-export const deletePlant = (id: number): void => {
-  const index = plants.findIndex((plant) => plant.id === id);
-  if (index !== -1) {
-    plants.splice(index, 1);
+export const createPlant = async (plant: IPlant): Promise<IPlant> => {
+  console.log('createPlant service');
+  console.log('plant', plant);
+  try {
+    const newPlant = new Plant(plant);
+    return await newPlant.save();
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(`Failed to create plant: ${error.message}`);
+    } else {
+      throw new Error('An unknown error occurred while creating the plant');
+    }
   }
 };
