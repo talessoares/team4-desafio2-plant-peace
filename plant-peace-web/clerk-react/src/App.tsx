@@ -1,3 +1,4 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
   SignedIn,
   SignedOut,
@@ -5,18 +6,16 @@ import {
   UserButton,
 } from "@clerk/clerk-react";
 
-import "./App.css";
+import './App.css';
+import Footer from './components/Footer/Footer';
+
+
 
 function App() {
   return (
-    <header>
-      <SignedOut>
-        <SignInButton />
-      </SignedOut>
-      <SignedIn>
-        <UserButton />
-      </SignedIn>
-    </header>
+   
+      <Footer />
+  
   );
 }
 
