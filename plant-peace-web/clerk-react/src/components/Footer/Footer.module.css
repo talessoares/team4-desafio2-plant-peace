@@ -4,7 +4,7 @@
 .footer {
   background-color: #354733; 
   color: white; 
-  width: 1732px;
+  width: 100vw;
   height: 572px;
   top: 4549px;
   left: -0px;
@@ -14,31 +14,15 @@
   flex-direction: row;
   flex-flow: wrap;
   font-family: 'EB Garamond', serif; 
-}
-
-.footer::before {
-  content: ""; 
-  position: absolute; 
-  top: 0;
-  left: 0;
-  width: 100%; 
-  height: 100%;
   background-image: url('src/assets/images/plantPattern.svg'); 
-  background-repeat: no-repeat; 
-  background-size: contain; 
-  background-position: center; 
-  opacity: 0.1; 
-  z-index: 0; 
+  background-blend-mode: multiply; /* Combina a imagem com a cor de fundo */
 }
 
-.footer-content {
-  position: relative; 
-  z-index: 1; 
-}
+
 
 .square1 h2 {
   margin-bottom: 35px; 
-  
+
 }
 
 .square1 a{
