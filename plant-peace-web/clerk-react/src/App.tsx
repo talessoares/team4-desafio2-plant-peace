@@ -9,6 +9,7 @@ import "./App.css";
 
 function App() {
   return (
+  <>
     <header>
       <SignedOut>
         <SignInButton />
@@ -17,6 +18,13 @@ function App() {
         <UserButton />
       </SignedIn>
     </header>
+
+    <h1>
+    Página Em Construção🏗️🚧
+    </h1>
+    <p>Obrigado por acessar, esperamos que volte quando ela estiver pronta!</p>
+  </>
+
   );
 }
 
