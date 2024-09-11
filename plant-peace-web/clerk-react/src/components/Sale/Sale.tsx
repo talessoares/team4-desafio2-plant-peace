@@ -77,7 +77,8 @@ const Sale = () => {
               991: { perPage: 3 },
               767: { perPage: 3 },
               480: { perPage: 3 },
-              425: { perPage: 2 },
+              425: { perPage: 3 },
+              375: { perPage: 2 }
             },
           }}
         >
