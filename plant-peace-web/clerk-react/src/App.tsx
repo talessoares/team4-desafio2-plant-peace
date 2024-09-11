@@ -9,6 +9,10 @@ import "./App.css";
 // import water from "./assets/icons/water.png";
 // import sun from "./assets/icons/sun.png";
 // import nutrients from "./assets/icons/nutrients.png";
+import { ThisWeek } from "./components/ThisWeek/ThisWeek";
+import Sale from "./components/Sale/Sale.tsx";
+import GreenSidePromoSection from "./components/call-to-action/GreenSidePromoSection";
+
 
 function App() {
   // const cards = [
@@ -54,6 +58,7 @@ function App() {
         Obrigado por acessar, esperamos que volte quando ela estiver pronta!
       </p>
     </>
+
   );
 }
 
