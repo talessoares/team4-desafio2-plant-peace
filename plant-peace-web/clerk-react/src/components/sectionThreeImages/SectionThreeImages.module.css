@@ -1,9 +1,9 @@
 .container {
     display: flex;
     gap: 106px; /* Espaçamento entre colunas */
-    padding: 40px;
+    padding: 80px;
     align-items: center;
-    background-color: #ffffff; /* Cor de fundo */
+    background-color: #FCFCFC;
   }
   
   .imageWrapper {
@@ -23,16 +23,18 @@
    width: 440px;
    height: 172px;
    margin-top: 0; /* Remove qualquer margem superior */
-   align-self: flex-start;
+   align-self: stretch;
+   opacity: 0.9;
   }
   
   .textSection {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 30px;
+    gap: 32px;
     width: 440px;
     height: 700px;
+    flex: 1 0 0;
   }
   
   .textSection p {
@@ -43,21 +45,104 @@
     align-self: start;
     width: 440px;
     font-family: 'raleway', sans-serif;
+    color: var(--Secondary-Secondary, #808276);
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 174.188%; /* 27.87px */
+    letter-spacing: 0.08px;
   }
   
   .button {
+    width: 191px;
+    height: 60px;
     padding: 10px 20px;
     font-size: 16px;
     font-weight: 600;
-    background-color: #4b5c43;
+    background: var(--Primary-Lunar-green, #354733);
     color: #fff;
     border: none;
-    border-radius: 4px;
     cursor: pointer;
+    border-radius: 0px;
     max-width: 200px;
+    color: var(--white, #FCFCFC);
+    text-align: center;
+    /* secondary/Secondary */
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 154.5%; /* 24.72px */
   }
   
   .button:hover {
     background-color: #3a4b35;
   }
   
+
+  @media (max-width: 1024px) {
+    .container {
+        padding: 40px;
+        gap: 50px;
+    }
+  
+    .image {
+        height: 500px;
+        width: 150px;
+    }
+  
+    .textSection {
+        width: 200px;
+        height: auto;
+    }
+  
+}
+
+/* Responsividade para telas menores que 768px (tablets) */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 20px;
+        gap: 30px;
+        align-items: center;
+    }
+
+    .image {
+        height: 400px;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .imageWrapper{
+        gap: 10px;
+        
+    }
+    .textSection {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* Responsividade para telas menores que 480px (smartphones) */
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+        gap: 20px;
+    }
+
+    .image {
+        height: auto;
+        width: 100%;
+    }
+
+    .textSection p {
+        font-size: 14px;
+    }
+
+    .button {
+        width: 100%;
+        height: auto;
+        padding: 15px;
+    }
+}
