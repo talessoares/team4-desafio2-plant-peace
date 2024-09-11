@@ -11,12 +11,12 @@ import plant from '../../assets/icons/nutrients.png';
 import sun from '../../assets/icons/sun.png';
 
 const Home = () => {
-  // Definindo as props para passar para o SectionSteps
-  const title = "Como Funciona";
-  const description = "Aqui estão os passos que você deve seguir.";
+  
+  const title = "steps to take care of your plants";
+  const description = "By following these three steps - proper watering, appropriate sunlight, and providing essential nutrients - you'll be well on your way to maintaining healthy and thriving plants..";
   const cards = [
     {
-      icon: water, // você pode ajustar isso conforme necessário
+      icon: water, 
       title: "Watering",
       description: "water your plants when the top inch of soil feels dry to the touch. Avoid overwatering, as it can lead to root  dehydration.",
     },

@@ -1,4 +1,5 @@
 import styles from "./CardPlant.module.css";
+import defaultImg from "../../assets/images/plant1.png";
 
 interface Plant {
   _id: string;
@@ -22,11 +23,11 @@ const calculateDiscount = (price: string, discountPercentage: number) => {
 
   return {
     discountedPrice: discountedPrice.toFixed(2), // Valor com desconto formatado
-    originalPrice: priceValue.toFixed(2) // Preço original formatado
+    originalPrice: priceValue.toFixed(2), // Preço original formatado
   };
 };
 
-// Verifica se a planta está em promoção
+
 const isPlantInSale = (plant: Plant) => {
   return plant.isInSale && plant.discountPercentage > 0;
 };
@@ -42,13 +43,19 @@ const CardPlant = ({ plant }: { plant: Plant }) => {
 
   return (
     <div className={styles.card}>
-      <img src={plant.imgUrl} alt={plant.name} />
+      {/* Carrega a imagem padrão em caso de erro */}
+      <img
+        src={plant.imgUrl || defaultImg} // Use a imagem padrão se plant.imgUrl estiver ausente
+        alt={plant.name}
+        onError={(e) => {
+          e.currentTarget.src = defaultImg; // Substitui pela imagem padrão se houver erro no carregamento
+        }}
+      />
       <h1>{plant.name}</h1>
 
       {isPlantInSale(plant) ? (
         <>
           <p>
-           
             <span className={styles.discountedPrice}>R${discountedPrice}</span>
             <span className={styles.originalPrice}>R${originalPrice}</span>
           </p>
@@ -56,7 +63,8 @@ const CardPlant = ({ plant }: { plant: Plant }) => {
       ) : (
         <p>R${plant.price}</p>
       )}
-      
+
+     
       <div>
         {plant.label.map((lbl, index) => (
           <span key={index} className={styles.label}>
