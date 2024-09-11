@@ -1,0 +1,84 @@
+.carrousel {
+  width: 100vw;
+  margin: auto;
+  background-color: var(--white);
+}
+
+.splide__slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 389px !important;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 389px !important;
+}
+
+.title {
+  font-family: "EB Garamond";
+  color: var(--lunar-green);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px 0 200px 0;
+  width: 100%;
+  font-size: 2.4rem;
+}
+
+.title span {
+  color: var(--avacado);
+  display: inline-block;
+}
+
+.carrouselBack {
+  background-color: var(--white);
+}
+
+.container {
+  background-color: var(--white);
+}
+
+/* Exemplo para telas grandes */
+@media screen and (min-width: 2560px) {
+  .splide__slide {
+    max-width: 350px;
+  }
+}
+
+/* Mobile responsive */
+@media (max-width: 767px) {
+  .splide__slide {
+    max-width: 350px;
+  }
+}
+
+/* Tablet responsive */
+@media (min-width: 768px) and (max-width: 991px) {
+  .splide__slide {
+    max-width: 350px;
+  }
+
+  .title {
+    font-size: 2.4rem;
+    padding-top: 10%;
+  }
+}
+
+/* Desktop responsive */
+@media (min-width: 1920px) and (max-width: 2559px) {
+  .splide__slide {
+    max-width: 350px;
+  }
+}
+
+/* Ultrawide responsive */
+@media (min-width: 2560px) {
+  .splide__slide {
+    max-width: 350px;
+  }
+}
