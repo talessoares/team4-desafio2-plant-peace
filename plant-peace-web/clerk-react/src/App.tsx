@@ -6,6 +6,8 @@ import {
 } from "@clerk/clerk-react";
 
 import "./App.css";
+import { ThisWeek } from "./components/ThisWeek/ThisWeek";
+import Sale from "./components/Sale/Sale.tsx";
 
 function App() {
   return (
@@ -18,7 +20,7 @@ function App() {
         <UserButton />
       </SignedIn>
     </header>
-
+    <Sale />
     <h1>
     Página Em Construção🏗️🚧
     </h1>
