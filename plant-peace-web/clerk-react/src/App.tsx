@@ -1,17 +1,11 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
   SignedIn,
   SignedOut,
   SignInButton,
   UserButton,
 } from "@clerk/clerk-react";
-import "./App.css";
-// import SectionSteps from "./components/SectionSteps/SectionSteps";
-// import water from "./assets/icons/water.png";
-// import sun from "./assets/icons/sun.png";
-// import nutrients from "./assets/icons/nutrients.png";
-import { ThisWeek } from "./components/ThisWeek/ThisWeek";
-import Sale from "./components/Sale/Sale.tsx";
-import GreenSidePromoSection from "./components/call-to-action/GreenSidePromoSection";
+
 
 
 function App() {
@@ -37,6 +31,7 @@ function App() {
   //   },
   // ];
   return (
+
     <>
       <header>
         <SignedOut>
