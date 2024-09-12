@@ -51,13 +51,20 @@
 }
 
 .label {
-  background-color: var(--wisper);
-  border: 1px solid var(--avacado);
-  border-radius: 20px;
-  color: var(--avacado);
+  background-color:  #F0F1EE;
+  border: 1px solid #8A9B6E;
+  border-radius: 20px !important;
+  color: var(--avacado) !important;
   padding: 2% 3%;
   font-size: 1.6rem;
   transition: transform 0.3s ease, background-color 0.3s;
+  color: var(--Primary-Avacado, #8A9B6E);
+
+  font-family: Raleway;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 154.5%; /* 24.72px */
 }
 
 .label:hover {

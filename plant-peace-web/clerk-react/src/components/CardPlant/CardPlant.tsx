@@ -27,23 +27,17 @@ const calculateDiscount = (price: string, discountPercentage: number) => {
   };
 };
 
-
-const isPlantInSale = (plant: Plant) => {
-  return plant.isInSale && plant.discountPercentage > 0;
-};
-
 const CardPlant = ({ plant }: { plant: Plant }) => {
   if (!plant) {
     return <div>Carregando...</div>;
   }
 
-  const { discountedPrice, originalPrice } = isPlantInSale(plant)
+  const { discountedPrice, originalPrice } = plant.isInSale && plant.discountPercentage > 0
     ? calculateDiscount(plant.price, plant.discountPercentage)
     : { discountedPrice: plant.price, originalPrice: "" };
 
   return (
     <div className={styles.card}>
-      {/* Carrega a imagem padrão em caso de erro */}
       <img
         src={plant.imgUrl || defaultImg} // Use a imagem padrão se plant.imgUrl estiver ausente
         alt={plant.name}
@@ -52,23 +46,23 @@ const CardPlant = ({ plant }: { plant: Plant }) => {
         }}
       />
       <h1>{plant.name}</h1>
-
-      {isPlantInSale(plant) ? (
-        <>
-          <p>
-            <span className={styles.discountedPrice}>R${discountedPrice}</span>
-            <span className={styles.originalPrice}>R${originalPrice}</span>
-          </p>
-        </>
-      ) : (
-        <p>R${plant.price}</p>
-      )}
-
-     
+      <p>
+       
+           <span className={styles.price}>R{plant.price}</span>
+           {plant.isInSale && plant.discountPercentage > 0 && originalPrice && (
+          
+          <>
+           <span className={styles.originalPrice}> R{discountedPrice}</span>
+          
+         
+          </>
+        
+      )}  
+      </p>
       <div>
         {plant.label.map((lbl, index) => (
           <span key={index} className={styles.label}>
-            {lbl}
+           {lbl} 
           </span>
         ))}
       </div>

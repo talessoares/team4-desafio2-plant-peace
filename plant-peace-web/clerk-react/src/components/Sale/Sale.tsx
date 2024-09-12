@@ -34,8 +34,9 @@ const Sale = () => {
   
           const data: Plant[] = await response.json();
           console.log("Dados das plantas recebidos:", data);
-  
-          setPlants(data);
+          // Filtra plantas que estão em promoção
+          const filteredPlants = data.filter((plant) => plant.isInSale);
+          setPlants(filteredPlants);
         } catch (error) {
           console.error("Erro ao buscar plantas:", error);
         }  finally {
@@ -45,6 +46,10 @@ const Sale = () => {
   
       fetchPlants();
     }, []);
+
+
+    //filter plants that are in sale
+    plants.filter((plant) => plant.isInSale === true);
   
     if (loading) {
       return <div>Carregando plantas...</div>;
