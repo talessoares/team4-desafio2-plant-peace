@@ -6,7 +6,7 @@
   padding: 40px 20px;
   text-align: center;
   gap: 41px;
-  width: 1732px;
+  width: 100vw;
 }
 
 .stepsCards {
@@ -51,7 +51,7 @@
 
 @media (max-width: 1732px) {
   .container {
-    width: 100%;
+    width: 100vw;
   }
 }
 

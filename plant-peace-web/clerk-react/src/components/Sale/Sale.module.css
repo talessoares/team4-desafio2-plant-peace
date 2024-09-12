@@ -41,6 +41,7 @@
   
   .container {
     background-color: var(--white);
+    width: 100vw;
   }
   
   /* Exemplo para telas grandes */
