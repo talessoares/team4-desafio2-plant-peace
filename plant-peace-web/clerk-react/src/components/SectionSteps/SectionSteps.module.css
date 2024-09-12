@@ -23,7 +23,7 @@
 .title {
   font-family: "EB Garamond", serif;
   font-size: 64px;
-  color: #354733;
+  color: var(--lunar-green);
 }
 
 .highlight {

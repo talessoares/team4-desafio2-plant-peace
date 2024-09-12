@@ -12,7 +12,7 @@ import sun from '../../assets/icons/sun.png';
 
 const Home = () => {
   
-  const title = "steps to take care of plants your";
+  const title = "Steps To Take Care Of Your Plants";
   const description = "By following these three steps - proper watering, appropriate sunlight, and providing essential nutrients - you'll be well on your way to maintaining healthy and thriving plants..";
   const cards = [
     {
@@ -34,10 +34,14 @@ const Home = () => {
 
   return (
     <div className={styles.container}>
-      <GreenSidePromoSection />
-      <SectionSteps cards={cards} title={title} description={description} />
-      <div>
 
+      <div >
+      <GreenSidePromoSection />
+      </div>
+
+
+      <div>
+      <SectionSteps cards={cards} title={title} description={description} />
       </div>
      
       <ThisWeek />
