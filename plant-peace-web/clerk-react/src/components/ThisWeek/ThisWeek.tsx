@@ -74,6 +74,8 @@ export const ThisWeek: React.FC = () => {
             breakpoints: {
               2560: { perPage: 5 },
               1920: { perPage: 3 },
+              1732: { perPage: 4 },
+              1440: { perPage: 3 },
               991: { perPage: 2 },
               767: { perPage: 2 },
               480: { perPage: 2 },

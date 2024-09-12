@@ -38,3 +38,37 @@
   width: 998px;
   color: #afb2aa;
 }
+
+
+@media (max-width: 1732px) {
+  .container {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 30px 20px;
+  }
+
+  .stepsCards {
+    flex-direction: column;
+    gap: 41px;
+  }
+
+  .title {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;   
+    margin: 0 auto;
+  }
+  
+  .description {
+    width: 80%;
+  }
+  
+}

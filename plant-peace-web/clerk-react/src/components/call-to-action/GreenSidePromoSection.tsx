@@ -16,7 +16,7 @@ const GreenSidePromoSection = () => {
             <h1>
               discover your <span>green</span> side
             </h1>
-            <p>
+            <p className={styles.paragraphDescription}>
               We are your one-stop destination for all things green and growing.
               Our website offers a wide array of stunning plants, ranging from
               vibrant flowers to lush indoor foliage, allowing you to create

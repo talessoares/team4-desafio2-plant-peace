@@ -21,6 +21,11 @@
   margin-bottom: -19px;
 }
 
+.paragraphDescription{
+  display: flex;height: 97px;flex-direction: column;justify-content: center;align-self: stretch;
+  font-family: raleway sans-serif;
+}
+
 .description-container {
   margin-left: 100px;
   margin-bottom: 13rem;

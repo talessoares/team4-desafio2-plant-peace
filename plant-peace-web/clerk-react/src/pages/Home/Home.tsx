@@ -12,7 +12,7 @@ import sun from '../../assets/icons/sun.png';
 
 const Home = () => {
   
-  const title = "steps to take care of your plants";
+  const title = "steps to take care of plants your";
   const description = "By following these three steps - proper watering, appropriate sunlight, and providing essential nutrients - you'll be well on your way to maintaining healthy and thriving plants..";
   const cards = [
     {
