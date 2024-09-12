@@ -5,9 +5,9 @@ import leftPlant from "../../assets/images/leftPlant.svg";
 const GreenSidePromoSection = () => {
   return (
     <>
-      <div className={styles["main-container"]}>
+      <div className={styles.mainContainer}>
         <section className={styles.description}>
-          <div className={styles["description-container"]}>
+          <div className={styles.descriptionContainer}>
             <div className={styles["nature-span"]}>
               <div className={styles.line}></div>
               <h3 id={styles["love-nature"]}>Love for Nature</h3>
