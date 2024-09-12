@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import styles from "./ThisWeek.module.css";
 import CardPlant from "../CardPlant/CardPlant";
@@ -18,36 +19,27 @@ interface Plant {
   label: string[];
 }
 
-
 export const ThisWeek: React.FC = () => {
   const [plants, setPlants] = useState<Plant[]>([]);
   const [loading, setLoading] = useState(true);
 
-
   useEffect(() => {
     const fetchPlants = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/plants`);
-
-        if (!response.ok) {
-          throw new Error(`Erro na requisição: ${response.statusText}`);
-        }
-
-        const data: Plant[] = await response.json();
+        const response = await axios.get<Plant[]>(`http://localhost:5000/api/plants`);
+        const data = response.data;
         console.log("Dados das plantas recebidos:", data);
         const filteredPlants = data.filter((plant) => !plant.isInSale);
         setPlants(filteredPlants);
       } catch (error) {
         console.error("Erro ao buscar plantas:", error);
-      }  finally {
+      } finally {
         setLoading(false);
       }
     };
 
     fetchPlants();
   }, []);
-
-
 
   if (loading) {
     return <div>Carregando plantas...</div>;
@@ -58,7 +50,7 @@ export const ThisWeek: React.FC = () => {
       <div className={styles.container}>
         <div className={styles.title}>
           <h1>
-            This weeks Most Popular <span> and best selling </span>
+            This week's Most Popular <span> and best selling </span>
           </h1>
         </div>
         <Splide

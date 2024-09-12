@@ -3,6 +3,7 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import styles from "./Sale.module.css";
 import CardPlant from "../CardPlant/CardPlant";
 import "@splidejs/react-splide/css";
+import axios from 'axios';
 
 interface Plant {
   _id: string;
@@ -26,20 +27,15 @@ const Sale = () => {
     useEffect(() => {
       const fetchPlants = async () => {
         try {
-          const response = await fetch(`http://localhost:5000/api/plants`);
-  
-          if (!response.ok) {
-            throw new Error(`Erro na requisição: ${response.statusText}`);
-          }
-  
-          const data: Plant[] = await response.json();
+          const response = await axios.get<Plant[]>(`http://localhost:5000/api/plants`);
+          const data = response.data;
           console.log("Dados das plantas recebidos:", data);
-          // Filtra plantas que estão em promoção
-          const filteredPlants = data.filter((plant) => plant.isInSale);
+          // Filtra plantas que NÃO estão em promoção
+          const filteredPlants = data.filter((plant) => !plant.isInSale);
           setPlants(filteredPlants);
         } catch (error) {
           console.error("Erro ao buscar plantas:", error);
-        }  finally {
+        } finally {
           setLoading(false);
         }
       };
