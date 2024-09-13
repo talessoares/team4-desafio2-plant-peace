@@ -1,6 +1,6 @@
 import mongoose, { Document, Schema } from 'mongoose';
 
-// Interface do modelo
+
 export interface IPlant extends Document {
   id: number;
   name: string;
@@ -11,10 +11,10 @@ export interface IPlant extends Document {
   discountPercentage: number;
   features: string;
   description: string;
-  imgUrl: string;
+  imgBase64: string;
 }
 
-// Definição do esquema com o nome da coleção especificado
+
 const PlantSchema: Schema = new Schema({
   id: { type: Number, required: true },
   name: { type: String, required: true },
@@ -25,8 +25,8 @@ const PlantSchema: Schema = new Schema({
   discountPercentage: { type: Number, required: true },
   features: { type: String, required: true },
   description: { type: String, required: true },
-  imgUrl: { type: String, required: true }
-}, { collection: 'plants' }); // Alterar 'your-custom-collection-name' para o nome desejado
+  imgBase64: { type: String, required: true } 
+}, { collection: 'plants' }); 
 
 const Plant = mongoose.model<IPlant>('Plant', PlantSchema);
 
