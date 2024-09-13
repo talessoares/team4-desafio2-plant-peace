@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap");
+
+.main-container {
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: space-between;
+}
+
+.description {
+  z-index: 9999;
+  align-self: flex-end;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  width: 50rem;
+  height: 55rem;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: -19px;
+}
+
+.description-container {
+  margin-left: 100px;
+  margin-bottom: 13rem;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  max-width: 613px;
+  height: 391px;
+}
+
+.description-container h1 {
+  font-size: 64px;
+  text-transform: capitalize;
+  font-family: "EB Garamond", serif;
+  color: #354733;
+}
+
+.description-container span {
+  color: #8a9b6e;
+}
+
+.description-container p {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.main-plant {
+  width: 922px;
+  height: 1024px;
+  filter: grayscale(100%);
+}
+
+.left-plant-container {
+  position: relative;
+}
+
+.left-plant {
+  z-index: 5000;
+  position: absolute;
+  top: -18.5rem;
+  filter: grayscale(100%);
+  clip-path: inset(0 0 15rem 0);
+}
+
+.line {
+  width: 32px;
+  height: 3px;
+  background-color: #000;
+  margin: 1rem auto;
+}
+
+.nature-span {
+  width: 200px;
+  height: 28px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+#learn-gardening {
+  font-size: 20px;
+  margin-bottom: 60px;
+  color: #808276;
+  margin-left: 100px;
+  text-decoration: none;
+  z-index: 5000;
+}
+
+#shop-now {
+  text-align: center;
+  align-content: center;
+  width: 191px;
+  height: 62px;
+  background-color: #354733;
+  color: #fff;
+  font-size: 16px;
+  text-transform: capitalize;
+  text-decoration: none;
+}
+
+#love-nature {
+  font-family: "Pacifico", cursive;
+}

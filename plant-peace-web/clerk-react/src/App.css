@@ -9,7 +9,7 @@
   box-sizing: border-box;
 }
 
-html,
+/* html,
 body {
   height: 100%;
 }
@@ -42,8 +42,3 @@ h3 {
   --avacado: #8a9b6e;
 } */
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
