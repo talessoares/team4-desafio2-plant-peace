@@ -6,13 +6,14 @@ import {
   UserButton,
 } from "@clerk/clerk-react";
 import "./App.css";
+import Form from './components/Form/Form';
 
 function App() {
 
   return (
     <>
       
-    
+      <Form />
       <h1>Página Em Construção🏗️🚧</h1>
       <p>
         Obrigado por acessar, esperamos que volte quando ela estiver pronta!

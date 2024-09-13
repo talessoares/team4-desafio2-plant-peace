@@ -44,9 +44,16 @@ const Form = () => {
     });
   };
 
+  const transformNameToSnakeCase = (name: string): string => {
+    return name
+      .split(" ")
+      .join("_")
+      .toLowerCase();
+  }
+
   const onData = async (data: PlantForm) => {
     clearFormInputs();
-
+    data.imgUrl = transformNameToSnakeCase(data.plantName);
     try {
       const response = await fetch("http://localhost:5000/api/plants", {
         method: "POST",
