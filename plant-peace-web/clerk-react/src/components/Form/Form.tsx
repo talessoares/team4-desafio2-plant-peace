@@ -19,12 +19,27 @@ interface PlantForm {
 
 const Form = () => {
   const [registerButton, setRegisterButton] = useState<boolean>(false);
+  
+  const [selectedImage, setSelectedImage] = useState<File | null>(null);
+ 
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<PlantForm>();
+
+  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files[0]) {
+      const file = event.target.files[0];
+      setSelectedImage(file);
+      
+      // Create a preview of the selected image
+      const reader = new FileReader();
+     
+      reader.readAsDataURL(file);
+    }
+  };
 
   const clearFormInputs = (): void => {
     const inputs = document.querySelectorAll<HTMLInputElement>("input");
@@ -41,38 +56,81 @@ const Form = () => {
     radios.forEach((radio) => {
       radio.checked = false;
     });
+
+   
+    setSelectedImage(null);
+   
   };
 
   const transformNameToSnakeCase = (name: string): string => {
     return name.split(" ").join("_").toLowerCase();
   };
 
+  const uploadImage = async (plantName: string) => {
+    if (!selectedImage) return;
+  
+    const formData = new FormData();
+    formData.append("image", selectedImage);
+    formData.append("filename", plantName); // Envia o nome da planta
+  
+  
+    try {
+      const response = await fetch("http://localhost:5000/api/plants/img", {
+        method: "POST",
+        body: formData,
+      });
+  
+      if (!response.ok) {
+        console.error("Failed to upload image:", await response.text());
+        return false;
+      }
+  
+      const data = await response.json();
+      return data.imageUrl; // Recebe a URL da imagem
+    } catch (error) {
+      console.error("Erro ao enviar imagem:", error);
+      return false;
+    }
+  };
+  
+  
   const onData = async (data: PlantForm) => {
     clearFormInputs();
-    data.imgUrl = transformNameToSnakeCase(data.name);
-
-    // Definir isInSale com base no discountPercentage
-    data.isInSale = data.discountPercentage !== undefined && data.discountPercentage > 0;
-
+    const plantNameInSnakeCase = transformNameToSnakeCase(data.name);
+  
+    // Enviar a imagem para o backend
+    const imageUrl = await uploadImage(plantNameInSnakeCase);
+  
+    if (!imageUrl) {
+      console.error("Failed to upload image");
+      return;
+    }
+  
+    // Enviar os dados da planta, com a URL da imagem sendo o nome em snake case
+    const plantData = { ...data, imgUrl: plantNameInSnakeCase };
+  
     try {
       const response = await fetch("http://localhost:5000/api/plants", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(plantData),
       });
-
+  
       if (!response.ok) {
         console.error("Failed to create plant:", await response.text());
         return false;
       }
-
+  
       setRegisterButton(true);
     } catch (error) {
       console.error("Erro ao enviar dados da planta:", error);
     }
   };
+  
+  
+  
 
   return (
     <>
@@ -81,20 +139,20 @@ const Form = () => {
           <form>
             <h1>Plant registration</h1>
             <div className={styles["form-inputs"]}>
-              <label htmlFor="plantName">Plant name</label>
+              <label htmlFor="name">Plant name</label>
               <input
                 type="text"
-                id="plantName"
+                id="name"
                 placeholder="Echinocereus Cactus"
                 {...register("name", { required: true })}
               />
               {errors.name && <p className={styles.error}>Plant name is required</p>}
             </div>
             <div className={styles["form-inputs"]}>
-              <label htmlFor="plantSubtitle">Plant subtitle</label>
+              <label htmlFor="subtitle">Plant subtitle</label>
               <input
                 type="text"
-                id="plantSubtitle"
+                id="subtitle"
                 placeholder="A majestic addition to your plant collection"
                 {...register("subtitle", { required: true })}
               />
@@ -175,6 +233,16 @@ const Form = () => {
                 className={styles.textarea}
                 placeholder="Ladyfingers cactus..."
               ></textarea>
+            </div>
+
+            <div className={styles["form-inputs"]}>
+              <label htmlFor="image">Upload Image</label>
+              <input
+                type="file"
+                id="image"
+                onChange={handleImageChange}
+              />
+              
             </div>
           </form>
           <button onClick={handleSubmit(onData)} type="button">
