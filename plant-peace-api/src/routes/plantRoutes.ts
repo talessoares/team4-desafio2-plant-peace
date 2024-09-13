@@ -15,10 +15,9 @@ router.get('/plants/:id', getPlantHandler);
 router.post('/plants/img', upload.single('image'), (req, res) => {
     console.log(req.body);
         renameFile("../images/" + "default-name.png", "../images/" + req.body.filename+".png", (err) => {
-            console.log(req.body.name);
-        res.status(200).send('File renamed successfully');
+        console.log(req.body.name);
         });
-    
+        res.status(200)
 });
 
 function renameFile(oldPath: string, newPath: string, callback: (err: NodeJS.ErrnoException | null) => void) {

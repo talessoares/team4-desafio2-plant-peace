@@ -39,12 +39,7 @@ export const addPlant = async (req: Request, res: Response): Promise<void> => {
   
     console.log("req.body", req.body);
    
-      // Verifique se cada item em plantData é do tipo IPlant
-    if (!plantData.every((plant: any) => isValidPlant(plant))) {
-      console.log('Invalid plant data');
-      res.status(400).json({ message: 'Invalid plant data' });
-      return;
-    }
+    
    
     
     const newPlants = await Promise.all(plantData.map((plant: IPlant) => createPlant(plant)));

@@ -80,10 +80,7 @@ const Form = () => {
         body: formData,
       });
   
-      if (!response.ok) {
-        console.error("Failed to upload image:", await response.text());
-        return false;
-      }
+    
   
       const data = await response.json();
       return data.imageUrl; // Recebe a URL da imagem
@@ -100,15 +97,15 @@ const Form = () => {
   
     // Enviar a imagem para o backend
     const imageUrl = await uploadImage(plantNameInSnakeCase);
-  
-    if (!imageUrl) {
-      console.error("Failed to upload image");
-      return;
-    }
+    //close await 
+    
+    console.log("imageUrl", imageUrl);
   
     // Enviar os dados da planta, com a URL da imagem sendo o nome em snake case
     const plantData = { ...data, imgUrl: plantNameInSnakeCase };
-  
+    if (data.discountPercentage !== undefined) {
+      plantData.isInSale = true;
+    }
     try {
       const response = await fetch("http://localhost:5000/api/plants", {
         method: "POST",
