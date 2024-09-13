@@ -231,7 +231,7 @@
   }
 
   .imageWrapper1 {
-    padding-top: 900px !important;
+    padding-top: 150px !important;
   }
 
   .imageWrapper:first-child img {
@@ -251,5 +251,17 @@
     width: 100%;
     height: auto;
     padding: 15px;
+  }
+}
+
+/* Tablet responsive */
+@media (min-width: 768px) and (max-width: 991px) {
+  .container {
+    padding: 5px;
+    width: 100vw;
+  }
+
+  .imageWrapper1 {
+    padding-top: 0 !important;
   }
 }

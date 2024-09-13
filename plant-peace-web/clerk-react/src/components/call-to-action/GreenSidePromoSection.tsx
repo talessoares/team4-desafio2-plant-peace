@@ -1,6 +1,5 @@
 import styles from "./styles.module.css";
 import mainPlant from "../../assets/images/mainPlant.svg";
-import leftPlant from "../../assets/images/leftPlant.svg";
 
 const GreenSidePromoSection = () => {
   return (
@@ -14,7 +13,7 @@ const GreenSidePromoSection = () => {
             </div>
 
             <h1>
-              discover your <span>green</span> side
+              Discover Your <span className={styles.greenSpan}>Green</span> Side
             </h1>
             <p className={styles.paragraphDescription}>
               We are your one-stop destination for all things green and growing.
@@ -25,16 +24,6 @@ const GreenSidePromoSection = () => {
             <a id={styles["shop-now"]} href="#">
               shop now
             </a>
-          </div>
-
-          <div className={styles["left-plant-container"]}>
-            <picture>
-              <img
-                className={styles["left-plant"]}
-                src={leftPlant}
-                alt="Green Plant"
-              />
-            </picture>
           </div>
 
           <a href="#" id={styles["learn-gardening"]}>

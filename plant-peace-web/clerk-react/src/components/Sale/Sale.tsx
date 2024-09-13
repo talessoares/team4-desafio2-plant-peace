@@ -74,12 +74,11 @@ const Sale = () => {
               1732: { perPage: 4 },
               1600: { perPage: 3 },
               1440: { perPage: 3 },
-              1024: { perPage: 3 },
-              991: { perPage: 3 },
-              767: { perPage: 3 },
-              480: { perPage: 3 },
-              425: { perPage: 3 },
-              375: { perPage: 2 }
+              1200: { perPage: 3 },
+              991: { perPage: 2 },
+              767: { perPage: 1 },
+              480: { perPage: 2 },
+              425: { perPage: 1 },
             },
           }}
         >

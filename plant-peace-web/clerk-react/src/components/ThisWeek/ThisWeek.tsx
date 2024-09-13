@@ -71,9 +71,9 @@ export const ThisWeek: React.FC = () => {
               1440: { perPage: 3 },
               1200: { perPage: 3 },
               991: { perPage: 2 },
-              767: { perPage: 2 },
+              767: { perPage: 1 },
               480: { perPage: 2 },
-              425: { perPage: 2 },
+              425: { perPage: 1 },
             },
           }}
         >
@@ -89,3 +89,5 @@ export const ThisWeek: React.FC = () => {
     </>
   );
 };
+
+export default ThisWeek;

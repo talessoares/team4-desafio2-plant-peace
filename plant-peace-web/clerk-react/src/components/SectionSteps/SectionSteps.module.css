@@ -7,6 +7,7 @@
   text-align: center;
   gap: 41px;
   width: 100vw;
+  background-color: var(--white);
 }
 
 .stepsCards {

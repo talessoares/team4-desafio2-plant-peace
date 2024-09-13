@@ -49,7 +49,6 @@
   justify-content: space-between;
   width: 100vw;
   padding: 10px;
-  border-color: #eb1313;
 }
 
 .squareLeft {
@@ -151,7 +150,6 @@
   justify-content: space-between;
   width: 100vw;
   padding: 10px;
-  border-color: #370feb;
 }
 
 .squareLeftdown {
@@ -159,7 +157,6 @@
   height: 54px;
   gap: 0px;
   opacity: 0px;
-  border-color: #d10feb;
   margin-left: 90px;
 }
 
@@ -173,11 +170,76 @@
   height: 50px;
   gap: 0px;
   opacity: 0px;
-  border-color: #8b1515;
   margin-right: 75px;
   text-align: center;
 }
 
 .squareRight h3 {
   font-weight: normal;
+}
+
+/* Mobile responsive */
+@media (max-width: 767px) {
+  .footer {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0;
+  }
+
+  .upperSection,
+  .lowerSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    padding: 0;
+  }
+
+  .squaresRight {
+    display: flex;
+    flex-direction: column;
+    margin-right: 0;
+    padding-right: 0;
+  }
+
+  .squareLeft {
+    margin-top: 0;
+    margin-left: 0;
+    font-size: 16px;
+    height: auto;
+  }
+
+  .square1,
+  .square2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    height: auto;
+    margin-top: 20px;
+  }
+
+  .boxdivider {
+    margin-left: 0;
+    margin-right: 0;
+    align-self: center;
+  }
+
+  .divider {
+    width: 90vw;
+    margin: 20px auto;
+  }
+
+  .squareLeftdown,
+  .squareRight {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .squareRight h3 {
+    font-size: 14px;
+  }
 }
