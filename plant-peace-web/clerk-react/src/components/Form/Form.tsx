@@ -4,11 +4,12 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 
 interface PlantForm {
-  plantName: string;
-  plantSubtitle: string;
+  name: string;
+  subtitle: string;
   plantType: string;
   price: number;
-  discountPercentage: number;
+  discountPercentage?: number;
+  isInSale: boolean;
   label: string;
   features: string;
   description: string;
@@ -31,29 +32,28 @@ const Form = () => {
       input.value = "";
     });
 
-    const textareas = document.querySelectorAll<HTMLInputElement>("textarea");
+    const textareas = document.querySelectorAll<HTMLTextAreaElement>("textarea");
     textareas.forEach((textarea) => {
       textarea.value = "";
     });
 
-    const radios = document.querySelectorAll<HTMLInputElement>(
-      "input[type='radio']"
-    );
+    const radios = document.querySelectorAll<HTMLInputElement>("input[type='radio']");
     radios.forEach((radio) => {
       radio.checked = false;
     });
   };
 
   const transformNameToSnakeCase = (name: string): string => {
-    return name
-      .split(" ")
-      .join("_")
-      .toLowerCase();
-  }
+    return name.split(" ").join("_").toLowerCase();
+  };
 
   const onData = async (data: PlantForm) => {
     clearFormInputs();
-    data.imgUrl = transformNameToSnakeCase(data.plantName);
+    data.imgUrl = transformNameToSnakeCase(data.name);
+
+    // Definir isInSale com base no discountPercentage
+    data.isInSale = data.discountPercentage !== undefined && data.discountPercentage > 0;
+
     try {
       const response = await fetch("http://localhost:5000/api/plants", {
         method: "POST",
@@ -64,12 +64,13 @@ const Form = () => {
       });
 
       if (!response.ok) {
+        console.error("Failed to create plant:", await response.text());
         return false;
       }
 
       setRegisterButton(true);
     } catch (error) {
-      console.error("Erro ao buscar plant");
+      console.error("Erro ao enviar dados da planta:", error);
     }
   };
 
@@ -77,87 +78,81 @@ const Form = () => {
     <>
       <div className={styles.container}>
         <div className={styles["form-container"]}>
-          <form action="plant-form">
+          <form>
             <h1>Plant registration</h1>
             <div className={styles["form-inputs"]}>
-              <label htmlFor="plant-form">Plant name</label>
+              <label htmlFor="plantName">Plant name</label>
               <input
                 type="text"
+                id="plantName"
                 placeholder="Echinocereus Cactus"
-                {...register("plantName", {
-                  required: true,
-                })}
+                {...register("name", { required: true })}
               />
-              {errors?.plantName?.type === "required" && (
-                <p className={styles.error}>Plant name is required</p>
-              )}
+              {errors.name && <p className={styles.error}>Plant name is required</p>}
             </div>
             <div className={styles["form-inputs"]}>
-              <label htmlFor="plant-form">Plant subtitle</label>
+              <label htmlFor="plantSubtitle">Plant subtitle</label>
               <input
                 type="text"
+                id="plantSubtitle"
                 placeholder="A majestic addition to your plant collection"
-                {...register("plantSubtitle", {
-                  required: true,
-                })}
+                {...register("subtitle", { required: true })}
               />
-              {errors?.plantSubtitle?.type === "required" && (
-                <p className={styles.error}>Plant subtitle is required</p>
-              )}
+              {errors.subtitle && <p className={styles.error}>Plant subtitle is required</p>}
             </div>
 
             <div className={styles["form-inputs"]}>
-              <label htmlFor="plant-form">Plant type</label>
+              <label htmlFor="plantType">Plant type</label>
               <input
                 type="text"
+                id="plantType"
                 placeholder="Cactus"
-                {...register("plantType", {
-                  required: true,
-                })}
+                {...register("plantType", { required: true })}
               />
-              {errors?.plantType?.type === "required" && (
-                <p className={styles.error}>Plant type is required</p>
-              )}
+              {errors.plantType && <p className={styles.error}>Plant type is required</p>}
             </div>
 
             <div className={styles["form-radio"]}>
               <div className={styles.price}>
-                <label htmlFor="plant-form">Price</label>
+                <label htmlFor="price">Price</label>
                 <input
                   type="number"
+                  id="price"
                   placeholder="$139.99"
-                  {...register("price", {
-                    required: true,
-                  })}
+                  {...register("price", { required: true })}
                 />
-                {errors?.price?.type === "required" && (
-                  <p className={styles.error}>Price is required</p>
-                )}
+                {errors.price && <p className={styles.error}>Price is required</p>}
               </div>
 
               <div className={styles.price}>
-                <label htmlFor="plant-form">Discount percentage</label>
+                <label htmlFor="discountPercentage">Discount percentage</label>
                 <input
                   type="number"
-                  {...register("discountPrice")}
+                  id="discountPercentage"
+                  {...register("discountPercentage")}
                   placeholder="20%"
                 />
               </div>
             </div>
 
             <div className={styles["form-inputs"]}>
-              <label htmlFor="plant-form">Label:</label>
+              <label>Label:</label>
               <div id={styles.radio}>
                 <div>
-                  <input type="radio" value="indoor" {...register("label")} />
+                  <input
+                    type="radio"
+                    id="indoor"
+                    value="indoor"
+                    {...register("label", { required: true })}
+                  />
                   <label htmlFor="indoor">Indoor</label>
                 </div>
                 <div>
                   <input
                     type="radio"
+                    id="outdoor"
                     value="outdoor"
-                    {...register("label")}
-                    name="outdoor"
+                    {...register("label", { required: true })}
                   />
                   <label htmlFor="outdoor">Outdoor</label>
                 </div>
@@ -165,28 +160,24 @@ const Form = () => {
             </div>
 
             <div className={styles["form-inputs"]}>
-              <label htmlFor="plant-form">Features</label>
-              <div id={styles.textarea}></div>
-
+              <label htmlFor="features">Features</label>
               <textarea
-                {...register("features")}
-                className={styles.textarea}
-                name="features"
                 id="features"
+                {...register("features", { required: true })}
+                className={styles.textarea}
                 placeholder="Species: Echinocereus..."
               ></textarea>
 
-              <label htmlFor="plant-form">Description</label>
+              <label htmlFor="description">Description</label>
               <textarea
-                {...register("description")}
-                className={styles.textarea}
-                name="description"
                 id="description"
+                {...register("description", { required: true })}
+                className={styles.textarea}
                 placeholder="Ladyfingers cactus..."
               ></textarea>
             </div>
           </form>
-          <button onClick={() => handleSubmit(onData)()} type="submit">
+          <button onClick={handleSubmit(onData)} type="button">
             {registerButton ? "Plant registered" : "Register"}
           </button>
         </div>
