@@ -1,7 +1,8 @@
 // src/controllers/plantController.ts
 import { Request, Response } from 'express';
 import { getPlants, createPlant, deletePlant, updatePlant, getPlant } from '../services/plantService';
-import { IPlant } from '../models/plant';
+import Plant, { IPlant } from '../models/plant';
+
 
 export const getAllPlants = async (req: Request, res: Response): Promise<void> => {
   console.log('getAllPlants controller');  
@@ -19,22 +20,33 @@ export const getAllPlants = async (req: Request, res: Response): Promise<void> =
   }
 };
 
+
+
 export const addPlant = async (req: Request, res: Response): Promise<void> => {
   console.log('addPlant controller');
   try {
-    const plantData = req.body.plants; // Extraia o array de plantas do corpo da requisição
-    console.log("req.body", req.body);
+    let plantData = req.body;
 
+  
     if (!Array.isArray(plantData)) {
-      res.status(400).json({ message: 'Invalid data format' });
-      return;
+      if (typeof plantData === 'object') {
+        plantData = [plantData]; 
+      } else {
+        res.status(400).json({ message: 'No plant data provided' });
+        return;
+      }
     }
-
-    // Crie um array de promessas para salvar cada planta
+  
+    console.log("req.body", req.body);
+   
+    
+   
+    
     const newPlants = await Promise.all(plantData.map((plant: IPlant) => createPlant(plant)));
-
+    console.log('newPlants', newPlants);
     res.status(201).json(newPlants);
   } catch (error) {
+    console.error('Error in addPlant:', error);
     if (error instanceof Error) {
       res.status(400).json({ message: error.message });
     } else {
@@ -42,6 +54,24 @@ export const addPlant = async (req: Request, res: Response): Promise<void> => {
     }
   }
 };
+
+
+const isValidPlant = (plant: any): plant is IPlant => {
+  console.log('isValidPlant');
+  
+  return plant && typeof plant === 'object'
+    && 'plantName' in plant
+    && 'plantSubtitle' in plant
+    && 'plantType' in plant
+    && 'price' in plant
+    && 'discountPrice' in plant
+    && 'label' in plant
+    && 'features' in plant
+    && 'description' in plant
+    && 'imgUrl' in plant;
+};
+
+
 
 
 //delete plant
@@ -97,4 +127,6 @@ export const getPlantHandler = async (req: Request, res: Response): Promise<void
     }
   }
 };
+
+
 
