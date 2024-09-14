@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap");
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 0px;
+  text-align: center;
+  gap: 41px;
+  width: 100vw;
+  background-color: var(--white);
+}
+
+.stepsCards {
+  display: flex;
+  justify-content: space-between;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.title {
+  font-family: "EB Garamond", serif;
+  font-size: 64px;
+  color: var(--lunar-green);
+}
+
+.highlight {
+  color: #8a9b6e;
+}
+
+.description {
+  font-family: "Raleway";
+  font-size: 16px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 998px;
+  color: #afb2aa;
+}
+
+
+@media (max-width: 1920px) {
+  .container {
+    width: 100%;
+  }
+  
+  
+}
+
+
+@media (max-width: 1732px) {
+  .container {
+    width: 100vw;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 30px 20px;
+  }
+
+  .stepsCards {
+    flex-direction: column;
+    gap: 41px;
+  }
+
+  .title {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;   
+    margin: 0 auto;
+  }
+  
+  .description {
+    width: 80%;
+  }
+  
+}

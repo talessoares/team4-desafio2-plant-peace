@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  image-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - ./images:/usr/share/nginx/html/images
+    container_name: nginx

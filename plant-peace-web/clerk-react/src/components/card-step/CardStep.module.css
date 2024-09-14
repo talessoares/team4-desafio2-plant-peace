@@ -1,49 +1,54 @@
 .card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px;
-    border-radius: 8px;
-    max-width: 480px;
-    margin: auto;
-    height: 342px;
-    gap: 3.5rem; 
-    justify-content: space-between; 
-  }
-  
-  .icon {
-    font-size: 48px;
-    color: #4b5c43;
-  }
-  
-  .iconImage {
-    width: 64px; 
-    height: 64px;
-    object-fit: contain;
-  }
-  
-  .title {
-    font-size: 24px;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 30px;
-  }
-  
-  .description {
-    font-size: 16px;
-    color: #808276;
-    text-align: center;
-    line-height: 1.5;
-    max-width: 451px;
-    font-family: 'raleway', sans-serif;
-    justify-content: center;
-  }
-  
-  .body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1.5rem; 
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  border-radius: 8px;
+  max-width: 480px;
+  margin: auto;
+  height: 342px;
+  gap: 3.5rem;
+  justify-content: space-between;
+}
+
+.icon {
+  font-size: 48px;
+  color: #4b5c43;
+}
+
+.iconImage {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.iconImage:hover {
+  transform: scale(1.1);
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  font-family: Lato;
+  color: #1e1e24;
+  margin-bottom: 30px;
+}
+
+.description {
+  font-size: 16px;
+  color: #808276;
+  text-align: center;
+  line-height: 1.5;
+  max-width: 451px;
+  font-family: "raleway", sans-serif;
+  justify-content: center;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}

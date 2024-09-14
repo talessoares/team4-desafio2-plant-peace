@@ -1,7 +1,8 @@
 import { log } from 'console';
 import Plant, { IPlant } from '../models/plant';
+import { v4 as uuidv4 } from 'uuid';
 
-// Função para lidar com erros
+
 const handleError = (error: unknown, action: string): void => {
   if (error instanceof Error) {
     throw new Error(`Failed to ${action}: ${error.message}`);
@@ -20,9 +21,24 @@ export const getPlants = async (): Promise<IPlant[]> => {
   }
 };
 
+function createId(userId?: number | string): string {
+  if (userId !== undefined) {
+    if (typeof userId === 'number' || (typeof userId === 'string' && userId.trim() !== '')) {
+      return userId.toString();
+    } else {
+      throw new Error('Invalid user ID provided');
+    }
+  }
+  return uuidv4();
+}
+
 export const createPlant = async (plant: IPlant): Promise<IPlant> => {
   console.log('createPlant service');
   console.log('plant', plant);
+  if(plant.id === undefined) {
+    plant.id = createId();
+  }
+
   try {
     const existingPlant = await verifyIfPlantExists(plant.id);
     if (existingPlant) {
@@ -37,7 +53,7 @@ export const createPlant = async (plant: IPlant): Promise<IPlant> => {
   }
 };
 
-export const verifyIfPlantExists = async (plantId: number): Promise<boolean> => {
+export const verifyIfPlantExists = async (plantId: number | string): Promise<boolean> => {
   console.log('verifyIfPlantExists service');
   try {
     const plant = await Plant.findOne({ id: plantId });
@@ -45,7 +61,7 @@ export const verifyIfPlantExists = async (plantId: number): Promise<boolean> => 
     return !!plant;
   } catch (error) {
     handleError(error, 'verify if plant exists');
-    return false; // Retorna false em caso de erro, mas isso pode ser ajustado conforme necessário
+    return false; 
   }
 }
 
@@ -94,3 +110,5 @@ export const getPlant = async (plantId: number): Promise<IPlant> => {
     throw null; 
   }
 }
+
+

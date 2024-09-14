@@ -1,29 +1,29 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
   SignedIn,
   SignedOut,
   SignInButton,
   UserButton,
 } from "@clerk/clerk-react";
-
 import "./App.css";
+import Home from './pages/Home/Home';
+import { Header } from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import Register from './pages/Register/Register';
+import AboutUs from './pages/AboutUs/AboutUs';
 
 function App() {
-  return (
-  <>
-    <header>
-      <SignedOut>
-        <SignInButton />
-      </SignedOut>
-      <SignedIn>
-        <UserButton />
-      </SignedIn>
-    </header>
 
-    <h1>
-    Página Em Construção🏗️🚧
-    </h1>
-    <p>Obrigado por acessar, esperamos que volte quando ela estiver pronta!</p>
-  </>
+  return (
+    <>
+    <Header />
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/aboutus" element={<AboutUs />}/>
+      <Route path="/register" element={<Register />} />
+    </Routes>
+    <Footer />
+    </>
 
   );
 }
