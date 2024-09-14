@@ -2,7 +2,8 @@ import styles from "./Form.module.css";
 import mainPlant from "../../assets/images/mainPlant.svg";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUpload } from '@fortawesome/free-solid-svg-icons';
 interface PlantForm {
   name: string;
   subtitle: string;
@@ -235,13 +236,15 @@ const Form = () => {
             </div>
 
             <div className={styles["form-inputs"]}>
-              <label htmlFor="image">Upload Image</label>
-              <input
-                type="file"
-                id="image"
-                onChange={handleImageChange}
-              />
-              
+                <label htmlFor="image" className={styles["upload-label"]}>
+                  <FontAwesomeIcon icon={faUpload} /> Upload your plant image
+                </label>
+                <input
+                  type="file"
+                  id="image"
+                  onChange={handleImageChange}
+                  className={styles["file-input"]}
+                />
             </div>
           </form>
           <button onClick={handleSubmit(onData)} type="button">
