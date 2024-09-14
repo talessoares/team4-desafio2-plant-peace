@@ -47,6 +47,8 @@
 .signedOutButton button {
   color: var(--wisper);
   background-color: var(--lunar-green);
+  max-width: 80px;
+  max-height: 40px;
   text-decoration: none;
   font-size: 1.6rem;
   font-weight: normal;
