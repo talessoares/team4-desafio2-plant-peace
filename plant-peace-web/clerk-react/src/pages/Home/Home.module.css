@@ -1,7 +1,7 @@
 .container {
   margin-left: auto;
   margin-right: auto;
-  background-color: #f5f5f5;
+  background-color: var(--wisper);
   justify-content: center;
   align-items: center;
   position: relative;
@@ -9,6 +9,7 @@
 
 .left-plant-container {
   position: relative;
+  z-index: 5000;
 }
 
 .left-plant {
@@ -19,8 +20,18 @@
   clip-path: inset(0 0 15rem 0);
 }
 
+.customButton {
+  position: relative;
+  top: -350px;
+  left: 100px;
+}
+
 /* Mobile responsive */
 @media (max-width: 767px) {
+  .customButton {
+    position: relative;
+    top: -208px;
+  }
 }
 
 /* Tablet responsive */

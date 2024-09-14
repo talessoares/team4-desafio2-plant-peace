@@ -21,9 +21,6 @@ const GreenSidePromoSection = () => {
               vibrant flowers to lush indoor foliage, allowing you to create
               your very own green oasis.
             </p>
-            <a id={styles["shop-now"]} href="#">
-              shop now
-            </a>
           </div>
 
           <a href="#" id={styles["learn-gardening"]}>

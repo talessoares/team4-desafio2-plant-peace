@@ -6,11 +6,12 @@
   display: flex;
   justify-content: space-between;
   width: 100vw;
-  max-height: 900px;
+  max-height: 780px;
 }
 
 .description {
-  z-index: 9999;
+  position: relative;
+  z-index: 888;
   align-self: flex-start;
   display: flex;
   flex-flow: column nowrap;
@@ -18,7 +19,7 @@
   overflow: hidden;
   position: relative;
   margin-bottom: -19px;
-  padding-top: 250px;
+  padding-top: 50px;
 }
 
 .paragraphDescription {
@@ -33,11 +34,13 @@
 }
 
 .descriptionContainer {
+  position: relative;
+  z-index: 9999;
   margin-left: 100px;
   margin-bottom: 13rem;
   display: flex;
   flex-flow: column wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   max-width: 613px;
   height: 391px;
 }
@@ -60,11 +63,12 @@
 }
 
 .main-plant {
+  position: relative;
   height: 950px;
   object-position: top;
   filter: grayscale(100%);
-  z-index: -1;
-  margin-top: -50px;
+  z-index: 2;
+  margin-top: -115px;
 }
 
 .main-plant:hover {
@@ -88,12 +92,11 @@
 
 #learn-gardening {
   font-size: 20px;
-  margin-bottom: 60px;
   color: #808276;
   margin-left: 100px;
   text-decoration: none;
   z-index: 5000;
-  padding-top: 80px;
+  padding-top: 210px;
 }
 
 #shop-now {
@@ -115,16 +118,23 @@
 /* Mobile responsive */
 @media (max-width: 767px) {
   .main-plant {
-    width: 922px;
-    height: 950px;
-    object-position: top;
-    filter: grayscale(100%);
-    z-index: -1;
-    margin-top: -50px;
-    margin-left: -150px;
+    display: none;
   }
 
   .main-plant:hover {
     filter: grayscale(0%);
+  }
+
+  .descriptionContainer {
+    margin-left: 0;
+    margin-bottom: 0;
+    padding: 0 40px;
+  }
+}
+
+/* Tablet responsive */
+@media (min-width: 768px) and (max-width: 991px) {
+  .main-plant {
+    display: none;
   }
 }

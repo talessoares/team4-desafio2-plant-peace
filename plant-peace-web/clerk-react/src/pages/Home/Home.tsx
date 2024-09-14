@@ -11,6 +11,7 @@ import water from "../../assets/icons/water.png";
 import plant from "../../assets/icons/nutrients.png";
 import sun from "../../assets/icons/sun.png";
 import leftPlant from "../../assets/images/leftPlant.svg";
+import CustomButton from "@/components/CustomButton/CustomButton";
 
 const Home = () => {
   const title = "Steps To Take Care Of Your Plants";
@@ -39,9 +40,11 @@ const Home = () => {
 
   return (
     <div className={styles.container}>
-      <div>
         <GreenSidePromoSection />
+      <div className={styles.customButton}>
+        <CustomButton text="Shop Now" to="/products" />
       </div>
+
       <div className={styles["left-plant-container"]}>
         <picture>
           <img

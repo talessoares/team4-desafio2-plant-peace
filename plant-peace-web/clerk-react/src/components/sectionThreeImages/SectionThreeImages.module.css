@@ -80,6 +80,12 @@
   background-color: #3a4b35;
 }
 
+.customButton {
+  position: relative;
+  top: 0px;
+  left: 0px;
+}
+
 /* Ultrawide responsive */
 @media (min-width: 2560px) {
   .container {
@@ -122,8 +128,10 @@
     text-align: left;
   }
 
-  .textSection button {
-    margin-left: 150px;
+  .customButton {
+    position: relative;
+    top: 0px;
+    left: -130px;
   }
 }
 
