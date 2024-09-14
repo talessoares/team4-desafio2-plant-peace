@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "./GitHubProfileCard.module.css";
+import styles from "./GithubProfileCard.module.css";
 
 interface GitHubProfileCardProps {
   username: string;
