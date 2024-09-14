@@ -1,8 +1,9 @@
 import React from "react";
 import styles from "./SectionThreeImages.module.css";
-import image1 from "../../assets/images/rectangle1.png"; // Importando as imagens
-import image2 from "../../assets/images/rectangle2.png"; // Importando as imagens
-import image3 from "../../assets/images/rectangle3.png"; // Importando a terceira imagem
+import image1 from "../../assets/images/rectangle1.png";
+import image2 from "../../assets/images/rectangle2.png";
+import image3 from "../../assets/images/rectangle3.png";
+import CustomButton from "../CustomButton/CustomButton";
 
 const SectionThreeImages: React.FC = () => {
   return (
@@ -36,7 +37,10 @@ const SectionThreeImages: React.FC = () => {
           Ready to explore our virtual garden and discover the joys of gardening
           with us!
         </p>
-        <button className={styles.button}>See more photos</button>
+
+        <div className={styles.customButton}>
+          <CustomButton text="See More Photos" to="#" />
+        </div>
       </div>
     </div>
   );

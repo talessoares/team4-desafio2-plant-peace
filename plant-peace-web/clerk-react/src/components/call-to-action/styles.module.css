@@ -1,32 +1,46 @@
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap");
 
-.main-container {
-  background-color: #f2f2f2;
+.mainContainer {
+  background-color: var(--wisper);
   display: flex;
   justify-content: space-between;
+  width: 100vw;
+  max-height: 780px;
 }
 
 .description {
-  z-index: 9999;
-  align-self: flex-end;
+  position: relative;
+  z-index: 888;
+  align-self: flex-start;
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
-  width: 50rem;
-  height: 55rem;
-  margin: 0;
   overflow: hidden;
   position: relative;
   margin-bottom: -19px;
+  padding-top: 50px;
 }
 
-.description-container {
+.paragraphDescription {
+  display: flex;
+  height: 97px;
+  flex-direction: column;
+  justify-content: center;
+  align-self: stretch;
+  font-family: "Raleway";
+  font-size: 16px;
+  color: #afb2aa;
+}
+
+.descriptionContainer {
+  position: relative;
+  z-index: 9999;
   margin-left: 100px;
   margin-bottom: 13rem;
   display: flex;
   flex-flow: column wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   max-width: 613px;
   height: 391px;
 }
@@ -38,8 +52,8 @@
   color: #354733;
 }
 
-.description-container span {
-  color: #8a9b6e;
+.greenSpan {
+  color: var(--avacado) !important;
 }
 
 .description-container p {
@@ -49,21 +63,16 @@
 }
 
 .main-plant {
-  width: 922px;
-  height: 1024px;
-  filter: grayscale(100%);
-}
-
-.left-plant-container {
   position: relative;
+  height: 950px;
+  object-position: top;
+  filter: grayscale(100%);
+  z-index: 2;
+  margin-top: -115px;
 }
 
-.left-plant {
-  z-index: 5000;
-  position: absolute;
-  top: -18.5rem;
-  filter: grayscale(100%);
-  clip-path: inset(0 0 15rem 0);
+.main-plant:hover {
+  filter: grayscale(0%);
 }
 
 .line {
@@ -83,11 +92,11 @@
 
 #learn-gardening {
   font-size: 20px;
-  margin-bottom: 60px;
   color: #808276;
   margin-left: 100px;
   text-decoration: none;
   z-index: 5000;
+  padding-top: 210px;
 }
 
 #shop-now {
@@ -104,4 +113,28 @@
 
 #love-nature {
   font-family: "Pacifico", cursive;
+}
+
+/* Mobile responsive */
+@media (max-width: 767px) {
+  .main-plant {
+    display: none;
+  }
+
+  .main-plant:hover {
+    filter: grayscale(0%);
+  }
+
+  .descriptionContainer {
+    margin-left: 0;
+    margin-bottom: 0;
+    padding: 0 40px;
+  }
+}
+
+/* Tablet responsive */
+@media (min-width: 768px) and (max-width: 991px) {
+  .main-plant {
+    display: none;
+  }
 }

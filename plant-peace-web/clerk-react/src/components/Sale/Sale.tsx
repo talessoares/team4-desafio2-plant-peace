@@ -3,6 +3,7 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import styles from "./Sale.module.css";
 import CardPlant from "../CardPlant/CardPlant";
 import "@splidejs/react-splide/css";
+import axios from 'axios';
 
 interface Plant {
   _id: string;
@@ -26,25 +27,25 @@ const Sale = () => {
     useEffect(() => {
       const fetchPlants = async () => {
         try {
-          const response = await fetch(`http://localhost:5000/api/plants`);
-  
-          if (!response.ok) {
-            throw new Error(`Erro na requisição: ${response.statusText}`);
-          }
-  
-          const data: Plant[] = await response.json();
+          const response = await axios.get<Plant[]>(`http://localhost:5000/api/plants`);
+          const data = response.data;
           console.log("Dados das plantas recebidos:", data);
-  
-          setPlants(data);
+          // Filtra plantas que NÃO estão em promoção
+          const filteredPlants = data.filter((plant) => !plant.isInSale);
+          setPlants(filteredPlants);
         } catch (error) {
           console.error("Erro ao buscar plantas:", error);
-        }  finally {
+        } finally {
           setLoading(false);
         }
       };
   
       fetchPlants();
     }, []);
+
+
+    //filter plants that are in sale
+    plants.filter((plant) => plant.isInSale === true);
   
     if (loading) {
       return <div>Carregando plantas...</div>;
@@ -73,12 +74,11 @@ const Sale = () => {
               1732: { perPage: 4 },
               1600: { perPage: 3 },
               1440: { perPage: 3 },
-              1024: { perPage: 3 },
-              991: { perPage: 3 },
-              767: { perPage: 3 },
-              480: { perPage: 3 },
-              425: { perPage: 3 },
-              375: { perPage: 2 }
+              1200: { perPage: 3 },
+              991: { perPage: 2 },
+              767: { perPage: 1 },
+              480: { perPage: 2 },
+              425: { perPage: 1 },
             },
           }}
         >
