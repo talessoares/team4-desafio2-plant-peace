@@ -16,7 +16,7 @@ interface Plant {
   features: string;
   description: string;
   imgUrl: string;
-  label: string[];
+  label: string;
 }
 
 export const ThisWeek: React.FC = () => {
