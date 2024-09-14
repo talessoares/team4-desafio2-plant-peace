@@ -73,14 +73,11 @@ const Form = () => {
     formData.append("image", selectedImage);
     formData.append("filename", plantName); // Envia o nome da planta
   
-  
     try {
       const response = await fetch("http://localhost:5000/api/plants/img", {
         method: "POST",
         body: formData,
       });
-  
-    
   
       const data = await response.json();
       return data.imageUrl; // Recebe a URL da imagem
@@ -90,41 +87,46 @@ const Form = () => {
     }
   };
   
-  
   const onData = async (data: PlantForm) => {
     clearFormInputs();
     const plantNameInSnakeCase = transformNameToSnakeCase(data.name);
   
-    // Enviar a imagem para o backend
-    const imageUrl = await uploadImage(plantNameInSnakeCase);
-    //close await 
-    
-    console.log("imageUrl", imageUrl);
+    // Enviar a imagem e os dados da planta simultaneamente
+    const imageUploadPromise = uploadImage(plantNameInSnakeCase);
   
-    // Enviar os dados da planta, com a URL da imagem sendo o nome em snake case
-    const plantData = { ...data, imgUrl: plantNameInSnakeCase };
+    // Preparar os dados da planta
+    const plantData = { ...data, imgUrl: plantNameInSnakeCase + ".png" };
     if (data.discountPercentage !== undefined) {
       plantData.isInSale = true;
     }
-    try {
-      const response = await fetch("http://localhost:5000/api/plants", {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(plantData),
-      });
+    
+    const plantDataPromise = fetch("http://localhost:5000/api/plants", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+
+      body: JSON.stringify(plantData),
+    });
   
-      if (!response.ok) {
-        console.error("Failed to create plant:", await response.text());
+    try {
+      const [imageUrl, plantResponse] = await Promise.all([
+        imageUploadPromise,
+        plantDataPromise,
+      ]);
+  
+      if (!plantResponse.ok) {
+        console.error("Failed to create plant:", await plantResponse.text());
         return false;
       }
   
       setRegisterButton(true);
+      console.log("imageUrl", imageUrl);
     } catch (error) {
-      console.error("Erro ao enviar dados da planta:", error);
+      console.error("Erro ao enviar dados:", error);
     }
   };
+  
   
   
   

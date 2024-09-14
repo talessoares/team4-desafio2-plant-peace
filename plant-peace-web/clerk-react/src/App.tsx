@@ -9,7 +9,7 @@ import "./App.css";
 import Home from './pages/Home/Home';
 import { Header } from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import Form from './components/Form/Form';
+import Register from './pages/Register/Register';
 
 function App() {
 
@@ -18,6 +18,7 @@ function App() {
     <Header />
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/register" element={<Register />} />
     </Routes>
     <Footer />
     </>
