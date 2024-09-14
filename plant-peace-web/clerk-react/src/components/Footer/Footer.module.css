@@ -91,7 +91,7 @@
 .square1 h2 {
   font-weight: bold;
   font-family: lato;
-  color: var(--white)
+  color: var(--white);
 }
 
 .square1 a {
@@ -160,11 +160,18 @@
   gap: 0px;
   opacity: 0px;
   margin-left: 90px;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-.squareLeftdown img {
-  width: 100%;
+.logoImage {
+  width: 90%;
   height: auto;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logoImage:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
 }
 
 .squareRight {
