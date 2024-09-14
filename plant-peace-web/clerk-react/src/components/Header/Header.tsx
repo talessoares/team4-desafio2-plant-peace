@@ -25,14 +25,17 @@ export const Header = () => {
           <Link to="/">Home</Link>
           <Link to="/register">Register</Link>
           <Link to="/products">Products</Link>
-          <Link to="/about">About Us</Link>
+          <Link to="/aboutus">About Us</Link>
         </nav>
       </div>
 
       <div className={styles.profile}>
+        <div className={styles.signedOutButton}>
         <SignedOut>
           <SignInButton />
         </SignedOut>
+        </div>
+
 
         <SignedIn>
           <div className={styles.profileImg}>

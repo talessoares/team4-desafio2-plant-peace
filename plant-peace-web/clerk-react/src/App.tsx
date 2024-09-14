@@ -6,17 +6,23 @@ import {
   UserButton,
 } from "@clerk/clerk-react";
 import "./App.css";
+import Home from './pages/Home/Home';
+import { Header } from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import Register from './pages/Register/Register';
+import AboutUs from './pages/AboutUs/AboutUs';
 
 function App() {
 
   return (
     <>
-      
-    
-      <h1>Página Em Construção🏗️🚧</h1>
-      <p>
-        Obrigado por acessar, esperamos que volte quando ela estiver pronta!
-      </p>
+    <Header />
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/aboutus" element={<AboutUs />}/>
+      <Route path="/register" element={<Register />} />
+    </Routes>
+    <Footer />
     </>
 
   );

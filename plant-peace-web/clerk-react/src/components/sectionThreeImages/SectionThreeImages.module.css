@@ -80,6 +80,12 @@
   background-color: #3a4b35;
 }
 
+.customButton {
+  position: relative;
+  top: 0px;
+  left: 0px;
+}
+
 /* Ultrawide responsive */
 @media (min-width: 2560px) {
   .container {
@@ -122,8 +128,10 @@
     text-align: left;
   }
 
-  .textSection button {
-    margin-left: 150px;
+  .customButton {
+    position: relative;
+    top: 0px;
+    left: -130px;
   }
 }
 
@@ -231,7 +239,7 @@
   }
 
   .imageWrapper1 {
-    padding-top: 900px !important;
+    padding-top: 150px !important;
   }
 
   .imageWrapper:first-child img {
@@ -251,5 +259,17 @@
     width: 100%;
     height: auto;
     padding: 15px;
+  }
+}
+
+/* Tablet responsive */
+@media (min-width: 768px) and (max-width: 991px) {
+  .container {
+    padding: 5px;
+    width: 100vw;
+  }
+
+  .imageWrapper1 {
+    padding-top: 0 !important;
   }
 }
