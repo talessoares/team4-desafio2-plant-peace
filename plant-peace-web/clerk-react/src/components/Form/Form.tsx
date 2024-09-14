@@ -247,11 +247,11 @@ const Form = () => {
                 />
             </div>
           </form>
-          <button onClick={handleSubmit(onData)} type="button">
+          <button className={styles["register"]} onClick={handleSubmit(onData)} type="button">
             {registerButton ? "Plant registered" : "Register"}
           </button>
         </div>
-        <img src={mainPlant} alt="Green Plant" />
+        <img className={styles["main-plant"]} src={mainPlant} alt="Green Plant" />
       </div>
     </>
   );

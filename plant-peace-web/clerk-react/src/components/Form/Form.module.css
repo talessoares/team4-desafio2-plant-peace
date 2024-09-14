@@ -225,3 +225,89 @@ button {
 input[type="file"]::file-selector-button:active {
   background-color: #e5e7eb;
 }
+
+
+@media (max-width: 480px) {
+  .container {
+    flex-direction: column;
+    color: #f2f2f2;
+  }
+
+  .form-container {
+    width: 100%;
+    margin-left: 0;
+    border: none;
+    position: relative;
+    background-image: url('../../assets/images/mainPlant.svg'); /* Substitua pelo caminho da sua imagem */
+    background-size: cover; /* Ajusta a imagem para cobrir o container */
+    background-position: center; /* Centraliza a imagem no container */
+    background-repeat: no-repeat; /* Impede a repetição da imagem */
+    padding: 20px; /* Adiciona algum espaço interno ao redor do formulário */
+    z-index: 1; /* Garante que o formulário esteja sobre a imagem */
+    /* Adiciona outras propriedades de estilo conforme necessário */
+}
+
+.form-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../assets/images/mainPlant.svg'); /* Substitua pelo caminho da sua imagem */
+    background-size: cover; /* Ajusta a imagem para cobrir o container */
+    background-position: center; /* Centraliza a imagem no container */
+    background-repeat: no-repeat; /* Impede a repetição da imagem */
+    filter: grayscale(100%) brightness(70%) blur(5px);
+    opacity: 1; /* Ajuste a opacidade aqui */
+    z-index: -1; /* Garante que a imagem de fundo esteja atrás do conteúdo */
+}
+
+
+  .form-container h1 {
+    width: 100%;
+    border-bottom: none;
+  }
+
+  .form-inputs input[type="text"] {
+    width: 100%;
+    opacity: 100%;
+    
+  }
+
+  .form-inputs label {
+    font-size: 16px;
+  }
+
+  .form-radio {
+    flex-direction: column;
+  }
+
+  .price input {
+    width: 100%;
+  }
+
+  .price {
+    gap: 8px;
+  }
+
+  .price label {
+    font-size: 16px;
+  }
+
+  .textarea {
+    width: 100%;
+  }
+
+  .register {
+    width: 75%;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  .main-plant{
+    display: none;
+  }
+}
