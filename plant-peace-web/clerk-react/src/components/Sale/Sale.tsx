@@ -16,7 +16,7 @@ interface Plant {
   features: string;
   description: string;
   imgUrl: string;
-  label: string[];
+  label: string;
 }
 
 const Sale = () => {
@@ -30,8 +30,8 @@ const Sale = () => {
           const response = await axios.get<Plant[]>(`http://localhost:5000/api/plants`);
           const data = response.data;
           console.log("Dados das plantas recebidos:", data);
-          // Filtra plantas que NÃO estão em promoção
-          const filteredPlants = data.filter((plant) => !plant.isInSale);
+          
+          const filteredPlants = data.filter((plant) => plant.isInSale);
           setPlants(filteredPlants);
         } catch (error) {
           console.error("Erro ao buscar plantas:", error);
