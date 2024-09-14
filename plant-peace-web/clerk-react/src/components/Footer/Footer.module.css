@@ -91,6 +91,7 @@
 .square1 h2 {
   font-weight: bold;
   font-family: lato;
+  color: var(--white)
 }
 
 .square1 a {
@@ -114,6 +115,7 @@
 .square2 h2 {
   font-weight: bold;
   font-family: lato;
+  color: var(--white);
 }
 
 .square2 a {
