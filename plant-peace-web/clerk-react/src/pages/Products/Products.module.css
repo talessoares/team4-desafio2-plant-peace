@@ -2,15 +2,26 @@
   padding: 20px;
 }
 
-.searchContainer {
+.title {
+  text-align: center;
+  font-size: 6.5rem;
   margin-bottom: 20px;
 }
 
+.searchContainer {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
 .searchInput {
-  width: 100%;
+  width: 50vw;
   padding: 8px;
   font-size: 16px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--gray);
   border-radius: 4px;
 }
 
@@ -18,4 +29,20 @@
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
+  justify-content: flex-start;
+  padding-left: 45px;
+}
+
+/* Tablet responsive */
+@media (min-width: 768px) and (max-width: 991px) {
+  .plantsList {
+    padding-left: 170px;
+  }
+}
+
+/* Desktop responsive */
+@media (min-width: 1920px) and (max-width: 2559px) {
+  .plantsList {
+    padding-left: 140px;
+  }
 }

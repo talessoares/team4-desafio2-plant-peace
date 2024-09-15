@@ -54,10 +54,11 @@ const Products: React.FC = () => {
 
   return (
     <div className={styles.productsContainer}>
+      <h1 className={styles.title}>Products Catalog</h1>
       <div className={styles.searchContainer}>
         <input
           type="text"
-          placeholder="Buscar por nome da planta..."
+          placeholder="Search plants..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           className={styles.searchInput}
