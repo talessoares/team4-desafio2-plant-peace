@@ -3,7 +3,7 @@
   gap: 106px;
   padding: 80px;
   align-items: center;
-  background-color: #fcfcfc;
+  background-color: var(--white);
   width: 100vw;
 }
 
@@ -18,14 +18,26 @@
   height: 697px;
   width: 440px;
   object-fit: cover;
+  transition: box-shadow 0.5s ease, transform 0.3s ease;
 }
 
-.ImageUpperText {
+.image:hover {
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+  transform: translateY(-10px);
+}
+
+.imageUpperText {
   width: 440px;
   height: 172px;
   margin-top: 0;
   align-self: stretch;
   opacity: 0.9;
+  transition: box-shadow 0.5s ease, transform 0.3s ease;
+}
+
+.imageUpperText:hover {
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+  transform: translateY(-10px);
 }
 
 .textSection {
@@ -53,6 +65,7 @@
   font-weight: 400;
   line-height: 174.188%;
   letter-spacing: 0.08px;
+  align-self: center;
 }
 
 .button {
@@ -78,6 +91,12 @@
 
 .button:hover {
   background-color: #3a4b35;
+}
+
+.customButton {
+  position: relative;
+  top: 0px;
+  left: 0px;
 }
 
 /* Ultrawide responsive */
@@ -122,8 +141,10 @@
     text-align: left;
   }
 
-  .textSection button {
-    margin-left: 150px;
+  .customButton {
+    position: relative;
+    top: 0px;
+    left: -130px;
   }
 }
 
@@ -231,7 +252,7 @@
   }
 
   .imageWrapper1 {
-    padding-top: 900px !important;
+    padding-top: 150px !important;
   }
 
   .imageWrapper:first-child img {
@@ -251,5 +272,17 @@
     width: 100%;
     height: auto;
     padding: 15px;
+  }
+}
+
+/* Tablet responsive */
+@media (min-width: 768px) and (max-width: 991px) {
+  .container {
+    padding: 5px;
+    width: 100vw;
+  }
+
+  .imageWrapper1 {
+    padding-top: 0 !important;
   }
 }

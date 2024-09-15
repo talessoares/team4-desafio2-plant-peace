@@ -1,0 +1,58 @@
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: var(--wisper);
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.left-plant-container {
+  position: relative;
+  z-index: 5000;
+}
+
+.left-plant {
+  z-index: 5000;
+  position: absolute;
+  top: -45.5rem;
+  filter: grayscale(100%);
+  clip-path: inset(0 0 15rem 0);
+}
+
+.customButton {
+  position: relative;
+  top: -350px;
+  left: 100px;
+}
+
+/* Mobile responsive */
+@media (max-width: 767px) {
+  .customButton {
+    position: relative;
+    top: -208px;
+  }
+}
+
+/* Tablet responsive */
+@media (min-width: 768px) and (max-width: 991px) {
+}
+
+/* Desktop responsive */
+@media (min-width: 1920px) and (max-width: 2559px) {
+  .left-plant-container {
+    position: relative;
+  }
+
+  .left-plant {
+    z-index: 5000;
+    position: absolute;
+    top: -45.5rem;
+    filter: grayscale(100%);
+    clip-path: inset(0 0 15rem 0);
+  }
+}
+
+/* Ultrawide responsive */
+@media (min-width: 2560px) {
+}

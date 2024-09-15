@@ -1,0 +1,57 @@
+.errorContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: var(--athena-grey);
+  text-align: center;
+}
+
+.errorContent {
+  background: var(--white);
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.errorCode {
+  font-size: 6rem;
+  margin: 0;
+  color: var(--dark);
+}
+
+.errorMessage {
+  font-size: 2.5rem;
+  color: var(--gray);
+}
+
+.gifContainer {
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  position: relative;
+  margin: 2rem 0;
+}
+
+.giphyEmbed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.goHome {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1.5rem;
+  font-size: 1.5rem;
+  color: var(--white);
+  background-color: var(--teak);
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.goHome:hover {
+  background-color: var(--avacado);
+}

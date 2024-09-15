@@ -1,22 +1,49 @@
-// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import {
-//   SignedIn,
-//   SignedOut,
-//   SignInButton,
-//   UserButton,
-// } from "@clerk/clerk-react";
-
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import { SignedIn, SignedOut } from "@clerk/clerk-react";
 import "./App.css";
-// import SectionPlantInfo from "./components/SectionPlantInfo/SectionPlantInfo";
+import Home from "./pages/Home/Home";
+import { Header } from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import Register from "./pages/Register/Register";
+import AboutUs from "./pages/AboutUs/AboutUs";
+import ErrorPage from "./pages/Error/ErrorPage";
+import NotLogged from "./pages/NotLogged/NotLogged";
 
 function App() {
   return (
     <>
-      <h1>Página Em Construção🏗️🚧</h1>
-      <p>
-        Obrigado por acessar, esperamos que volte quando ela estiver pronta!
-      </p>
-      {/* <SectionPlantInfo /> */}
+      <Header />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+
+        <Route
+          path="/register"
+          element={
+            <>
+              <SignedIn>
+                <Register />
+              </SignedIn>
+              <SignedOut>
+                <Navigate to="/notlogged" />
+              </SignedOut>
+            </>
+          }
+        />
+
+        <Route path="/aboutus" element={<AboutUs />} />
+
+        <Route path="/error" element={<ErrorPage />} />
+
+        <Route path="/notlogged" element={<NotLogged />} />
+      </Routes>
+
+      <Footer />
     </>
   );
 }

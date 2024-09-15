@@ -1,0 +1,37 @@
+.button {
+  position: relative;
+  z-index: 99999;
+  text-align: center;
+  align-content: center;
+  width: 191px;
+  height: 62px;
+  background-color: var(--lunar-green);
+  color: var(--white);
+  font-size: 16px;
+  text-transform: capitalize;
+  text-decoration: none;
+  border: 2px solid var(--lunar-green);
+  overflow: hidden;
+  transition: color 0.4s ease;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: var(--white);
+  transition: left 0.4s ease;
+  z-index: -1;
+}
+
+.button:hover {
+  color: var(--lunar-green);
+  cursor: pointer;
+}
+
+.button:hover::before {
+  left: 0;
+}
