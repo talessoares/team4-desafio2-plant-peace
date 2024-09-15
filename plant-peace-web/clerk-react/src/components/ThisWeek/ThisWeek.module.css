@@ -36,12 +36,11 @@
 }
 
 .carrouselBack {
-  background-color: var(--white);
+  background-color: var(--wisper);
 }
 
 .container {
-  background-color: var(--white);
-  width: 100vw;
+  background-color: var(--wisper);
 }
 
 /* Exemplo para telas grandes */
