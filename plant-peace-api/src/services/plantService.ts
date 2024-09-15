@@ -93,7 +93,7 @@ export const updatePlant = async (plantId: number, plant: IPlant): Promise<IPlan
   }
 }
 
-export const getPlant = async (plantId: number): Promise<IPlant> => {
+export const getPlant = async (plantId: string): Promise<IPlant> => {
   console.log('getPlant service');
   try {
     const exists = await verifyIfPlantExists(plantId);

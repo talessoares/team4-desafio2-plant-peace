@@ -1,74 +1,117 @@
-import styles from "./SectionPlantInfo.module.css";
-// import plantImage from "../../assets/images/plant1Extended.png";
-import { SectionPlantInfoProps } from "./types";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import styles from "./SectionPlantInfo.module.css"; // Certifique-se de importar o CSS
+import CustomButton from "../CustomButton/CustomButton";
+import { toast } from "react-toastify"; // Importe a função de toast
 
-const SectionPlantInfo = ({
-  name,
-  subtitle,
-  label,
-  price,
-  features,
-  description,
-  image,
-}: SectionPlantInfoProps) => {
+interface Plant {
+  _id: string;
+  id: number;
+  name: string;
+  subtitle: string;
+  price: string;
+  isInSale: boolean;
+  discountPercentage: number;
+  features: string;
+  description: string;
+  imgUrl: string;
+  label: string;
+}
+
+const SectionPlantInfo: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+  const [plant, setPlant] = useState<Plant | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const calculateDiscount = (price: string, discountPercentage: number) => {
+    const priceValue = parseFloat(price.replace(/[^0-9.-]+/g, "")); // Remove qualquer símbolo de moeda
+    const discountValue = (priceValue * discountPercentage) / 100;
+    const discountedPrice = priceValue - discountValue;
+    return {
+      discountedPrice: discountedPrice.toFixed(2),
+      originalPrice: priceValue.toFixed(2), // Preço original formatado
+    };
+  };
+
+  useEffect(() => {
+    const fetchPlant = async () => {
+      try {
+        console.log(`Fetching plant with id: ${id}`);
+        const response = await axios.get<Plant>(
+          `http://localhost:5000/api/plants/${id}`
+        );
+        setPlant(response.data);
+      } catch (error) {
+        setError("Erro ao carregar a planta");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPlant();
+  }, [id]);
+
+  if (loading) return <div>Carregando...</div>;
+  if (error) return <div>{error}</div>;
+
+  if (!plant) return <div>Planta não encontrada.</div>;
+
+  const price = parseFloat(plant.price);
+  const { discountedPrice, originalPrice } =
+    plant.isInSale && plant.discountPercentage > 0
+      ? calculateDiscount(plant.price, plant.discountPercentage)
+      : { discountedPrice: price.toFixed(2), originalPrice: "" };
+
+  const handleButtonClick = () => {
+    toast.success(`You bought ${plant.name} for $${discountedPrice}`);
+  };
+
   return (
     <section className={styles.container}>
-      <div>
-        {/* <img src={plantImage} alt="Plant Image" className={styles.image} /> */}
-        {typeof image === "string" ? (
-          <img src={image} alt={image} className={styles.image} />
-        ) : (
-          image
-        )}
+      <div className={styles.image}>
+        <img
+          src={`http://localhost:8080/images/${plant.imgUrl}`}
+          alt={plant.name}
+        />
       </div>
       <div className={styles.infoProduct}>
-        <h1 className={styles.title}>
-          {name}
-          {/* Echinocereus Cactus */}
-        </h1>
-        <h2 className={styles.subtitle}>
-          {subtitle}
-          {/* A Majestic Addition to Your Plant Collection */}
-        </h2>
+        <h1 className={styles.title}>{plant.name}</h1>
+        <h2 className={styles.subtitle}>{plant.subtitle}</h2>
         <div className={styles.labels}>
-          {label}
-          {/* <p>indoor</p>
-          <p>cactus</p> */}
+          {plant.label.split(",").map((label, index) => (
+            <p key={index}>{label}</p>
+          ))}
         </div>
         <p className={styles.price}>
-          {price}
-          {/* $139.99 */}
+          {plant.isInSale && plant.discountPercentage > 0 ? (
+            <>
+              <span className={styles.discountedPrice}>
+                R${discountedPrice}
+              </span>
+              <span className={styles.originalPrice}>R${originalPrice}</span>
+            </>
+          ) : (
+            <>Preço: R${price.toFixed(2)}</>
+          )}
         </p>
-        <button className={styles.button}>Check Out</button>
+        <CustomButton
+          text="Check out"
+          to="/products"
+          onClick={handleButtonClick}
+        />
         <div className={styles.features}>
-          {features}
-          {/* <h3>Features</h3>
+          <h3>Features</h3>
           <ul>
-            <li>Species: Echinocereus spp.</li>
-            <li>
-              Mature Size: Varies by species, typically ranging from 4 to 12
-              inches (10-30 cm) in height.
-            </li>
-            <li>
-              Blooming Season: Typically spring or summer, with flowers lasting
-              several days to weeks.
-            </li>
-            <li>
-              Pot Size: Available in various pot sizes to suit your preference
-              and needs.
-            </li>
-          </ul> */}
+            {plant.features.split(",").map((feature, index) => (
+              <li key={index}>{feature}</li>
+            ))}
+          </ul>
         </div>
         <div className={styles.description}>
-          {description}
-          {/* <h3>Description</h3>
-          <p>
-            Ladyfinger cactus (*Echinocereus pentalophus*) is also known as
-            Alice, Devil's Fingers, and Dog Tail. It needs bright sunlight,
-            light fertilizer, and is prone to root rot. The root system is
-            shallow and weak. Aphids and mealybugs are also a danger. Avoiding
-            wet soil can help with success with a ladyfinger cactus.
-          </p> */}
+          <h3>Description</h3>
+          <p>{plant.description}</p>
         </div>
       </div>
     </section>

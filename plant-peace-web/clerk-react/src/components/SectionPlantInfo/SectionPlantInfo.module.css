@@ -1,25 +1,30 @@
 @import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap");
-/* @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"); */
 
 .container {
   display: flex;
   padding: 100px 0;
-  gap: 82px;
-  height: 890px;
-  margin: 141px 100px;
+  gap: 50px;
+  margin: 0 100px;
+  max-width: 1535px !important;
+}
+
+.image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
 }
 
 .infoProduct {
   display: flex;
   flex-direction: column;
+  max-width: 600px;
 }
 
 .title {
   font-family: "EB Garamond", serif;
   font-size: 64px;
-  /* line-height: 34px; */
   color: #354733;
+  margin-bottom: 16px;
 }
 
 .subtitle {
@@ -55,6 +60,15 @@
   margin-bottom: 24px;
 }
 
+.originalPrice {
+  text-decoration: line-through;
+  margin-left: 10px;
+  color: var(--Dark-gray, #afb2aa);
+  font-style: normal;
+  line-height: 154.5%; /* 24.72px */
+  text-decoration-line: strikethrough;
+}
+
 .button {
   font-family: "Raleway";
   font-size: 16px;
@@ -65,6 +79,7 @@
   color: #fff;
   border: none;
   margin-bottom: 24px;
+  cursor: pointer;
 }
 
 .features,
@@ -82,6 +97,7 @@
 
 .features ul {
   list-style-type: none;
+  padding-left: 0;
 }
 
 .features ul li {
@@ -112,12 +128,3 @@
   line-height: 25px;
   color: #000000;
 }
-
-/* .features ul {
-}
-
-.features ul li {
-  font-family: "Raleway";
-  font-size: 16px;
-  color: #000000;
-} */

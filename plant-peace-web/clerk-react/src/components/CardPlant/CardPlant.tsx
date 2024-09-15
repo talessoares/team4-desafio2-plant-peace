@@ -2,6 +2,7 @@ import styles from "./CardPlant.module.css";
 import defaultImg from "../../assets/images/plant1.png";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 // setimage
 
@@ -42,29 +43,27 @@ const CardPlant = ({ plant }: { plant: Plant }) => {
     : { discountedPrice: plant.price, originalPrice: "" };
 
   return (
-    <div className={styles.card}>
-      <img
-        src={`http://localhost:8080/images/${plant.imgUrl}`} 
-        alt={plant.name}
-        // onError={(e) => {
-        //   e.currentTarget.src = defaultImg; 
-        // }}
-      />
-      <h1>{plant.name}</h1>
-      <p>
-        <span className={styles.price}>R${discountedPrice}</span>
-        {plant.isInSale && plant.discountPercentage > 0 && originalPrice && (
-          <>
-            <span className={styles.originalPrice}>R${originalPrice}</span>
-          </>
-        )}
-      </p>
-      <div>
-        <span className={styles.label}>
-          {plant.label}
-        </span>
-      </div>
+    <Link to={`/plant/${plant.id}`} className={styles.card}> {/* Link para a página de detalhes da planta */}
+    <img
+      src={`http://localhost:8080/images/${plant.imgUrl}`}
+      alt={plant.name}
+      onError={(e) => {
+        e.currentTarget.src = defaultImg; // Imagem padrão se houver erro
+      }}
+    />
+    <h1>{plant.name}</h1>
+    <p>
+      <span className={styles.price}>R${discountedPrice}</span>
+      {plant.isInSale && plant.discountPercentage > 0 && originalPrice && (
+        <span className={styles.originalPrice}>R${originalPrice}</span>
+      )}
+    </p>
+    <div>
+      <span className={styles.label}>
+        {plant.label}
+      </span>
     </div>
+  </Link>
   );
 };
 

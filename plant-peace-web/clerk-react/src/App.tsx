@@ -13,6 +13,7 @@ import Register from "./pages/Register/Register";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import ErrorPage from "./pages/Error/ErrorPage";
 import NotLogged from "./pages/NotLogged/NotLogged";
+import SectionPlantInfo from "./components/SectionPlantInfo/SectionPlantInfo";
 
 function App() {
   return (
@@ -35,6 +36,8 @@ function App() {
             </>
           }
         />
+
+        <Route path="/plant/:id" element={<SectionPlantInfo />} />
 
         <Route path="/aboutus" element={<AboutUs />} />
 
