@@ -14,6 +14,7 @@ import AboutUs from "./pages/AboutUs/AboutUs";
 import ErrorPage from "./pages/Error/ErrorPage";
 import NotLogged from "./pages/NotLogged/NotLogged";
 import SectionPlantInfo from "./components/SectionPlantInfo/SectionPlantInfo";
+import Products from "./pages/Products/Products";
 
 function App() {
   return (
@@ -38,6 +39,8 @@ function App() {
         />
 
         <Route path="/plant/:id" element={<SectionPlantInfo />} />
+
+        <Route path="/products" element={<Products />} />
 
         <Route path="/aboutus" element={<AboutUs />} />
 
