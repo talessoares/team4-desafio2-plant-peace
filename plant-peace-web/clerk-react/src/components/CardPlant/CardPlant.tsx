@@ -1,5 +1,5 @@
 import styles from "./CardPlant.module.css";
-import defaultImg from "../../assets/images/plant1.png";
+import defaultImg from "../../assets/images/default-img.jpeg";
 import { Link } from "react-router-dom";
 
 interface Plant {
