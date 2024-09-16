@@ -1,10 +1,9 @@
 import React from 'react'
-import styles from "./Register.module.css";
 import Form from '@/components/Form/Form';
 
 const Register: React.FC = () => {
   return (
-    <div className={styles.container}>
+    <div>
         <Form />
     </div>
   );
