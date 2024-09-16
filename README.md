@@ -69,3 +69,12 @@ O docker depende do arquivo de configuração nginx.conf(presente no diretório 
 ## Projeto Finizado:
 
 Acesse á pagina da wiki para ver as imagens do projeto finalizado:
+
+## Login com Clerk
+
+O login default do clerk é:
+- user: teste@mail.com
+- password: teste
+## Mongodb:
+Tanto o backend quanto o frontend possuem arquivos .env.local que carregam a URl do [Mongo Atlas](https://cloud.mongodb.com), é necessário adicionar os arquivos e adicionar uma URI valida para acessar o banco de dados.
+- Para usar nosso banco de dados é preciso pedir acesso pois o mongo limita o acesso do banco por IP
