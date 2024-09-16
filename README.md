@@ -8,7 +8,7 @@
 - **Docker:** ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
 - **Nginx:** ![Nginx](https://img.shields.io/badge/Nginx-009639?logo=nginx&logoColor=white)
 
-- 
+
 ## Para acessar a documentação do projeto acesse a [Wiki](https://github.com/talessoares/team4-desafio2-plant-peace/wiki)
 
 ## Como Executar: 
