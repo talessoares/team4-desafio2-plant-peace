@@ -33,6 +33,13 @@
   padding-left: 45px;
 }
 
+/* Mobile responsive */
+@media (max-width: 767px) {
+  .plantsList {
+    padding-left: 0px;
+  }
+}
+
 /* Tablet responsive */
 @media (min-width: 768px) and (max-width: 991px) {
   .plantsList {

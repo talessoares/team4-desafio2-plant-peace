@@ -68,6 +68,7 @@ const SectionPlantInfo: React.FC = () => {
 
   const handleButtonClick = () => {
     toast.success(`You bought ${plant.name} for $${discountedPrice}`);
+    console.log(`You bought ${plant.name} for $${discountedPrice}`);
   };
 
   return (
