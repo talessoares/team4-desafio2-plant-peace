@@ -10,19 +10,18 @@ dotenv.config();
 
 const app = express();
 
-// Configuração do CORS
+
 app.use(cors({
-  origin: 'http://localhost:5173' // Substitua pela URL do seu front-end, se diferente
+  origin: 'http://localhost:5173' 
 }));
 
-// Middleware para parsear JSON
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Conectar ao banco de dados
+
 connectDB();
 
-// Definir rotas
+
 app.use('/api', plantRoutes);
 
 export default app;

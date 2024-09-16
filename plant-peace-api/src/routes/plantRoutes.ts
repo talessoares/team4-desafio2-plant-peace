@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import upload from '../config/multerConfig'; // Importe o upload configurado
+import upload from '../config/multerConfig';
 import { getAllPlants, addPlant, deletePlantHandler, updatePlantHandler, getPlantHandler } from '../controllers/plantController';
 import path from 'path';
 import fs from 'fs';

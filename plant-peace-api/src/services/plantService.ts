@@ -44,12 +44,12 @@ export const createPlant = async (plant: IPlant): Promise<IPlant> => {
     if (existingPlant) {
       throw new Error(`Plant with ID ${plant.id} already exists`);
     }
-    //verify if discount is valid
+    
     if (plant.discountPercentage < 0 || plant.discountPercentage > 100) {
       throw new Error('Invalid discount percentage');
     }
 
-    //set isInSale to false if discount is 0
+    
     if (plant.discountPercentage === 0) {
       plant.isInSale = false;
     }

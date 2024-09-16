@@ -45,7 +45,7 @@ const Sale = () => {
     }, []);
 
 
-    //filter plants that are in sale
+   
     plants.filter((plant) => plant.isInSale === true);
   
     if (loading) {

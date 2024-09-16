@@ -1,4 +1,4 @@
-// src/controllers/plantController.ts
+
 import { Request, Response } from 'express';
 import { getPlants, createPlant, deletePlant, updatePlant, getPlant } from '../services/plantService';
 import Plant, { IPlant } from '../models/plant';
@@ -39,9 +39,9 @@ export const addPlant = async (req: Request, res: Response): Promise<void> => {
   
     console.log("req.body", req.body);
     
-     //set isInSale to false if discount is 0
+     
      if (req.body.discountPercentage === 0) {
-      req.body.isInSale = false;
+     req.body.isInSale = false;
     }
     
    
@@ -78,7 +78,7 @@ const isValidPlant = (plant: any): plant is IPlant => {
 
 
 
-//delete plant
+
 export const deletePlantHandler = async (req: Request, res: Response): Promise<void> => {
   console.log('deletePlant controller');
   try {
@@ -111,17 +111,17 @@ export const updatePlantHandler = async (req: Request, res: Response): Promise<v
   }
 }
 
-//find one
+
 export const getPlantHandler = async (req: Request, res: Response): Promise<void> => {
   console.log('getPlant controller');
   try {
-    const plantId = req.params.id; // Trata o ID como string
+    const plantId = req.params.id; 
     if (!plantId) {
       res.status(400).json({ message: 'Invalid plant ID' });
       return;
     }
 
-    const plant = await getPlant(plantId); // Assume que getPlant pode lidar com ID como string
+    const plant = await getPlant(plantId); 
     res.json(plant);
   } catch (error) {
     if (error instanceof Error) {
