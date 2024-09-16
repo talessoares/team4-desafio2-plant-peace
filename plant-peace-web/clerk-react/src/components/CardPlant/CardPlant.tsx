@@ -52,9 +52,9 @@ const CardPlant = ({ plant }: { plant: Plant }) => {
 
       <h1>{plant.name}</h1>
       <p>
-        <span className={styles.price}>R${discountedPrice}</span>
+        <span className={styles.price}>${discountedPrice}</span>
         {plant.isInSale && plant.discountPercentage > 0 && originalPrice && (
-          <span className={styles.originalPrice}>R${originalPrice}</span>
+          <span className={styles.originalPrice}>${originalPrice}</span>
         )}
       </p>
       <div>

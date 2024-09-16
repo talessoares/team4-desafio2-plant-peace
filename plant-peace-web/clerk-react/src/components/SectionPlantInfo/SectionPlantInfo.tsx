@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import styles from "./SectionPlantInfo.module.css"; // Certifique-se de importar o CSS
+import defaultImg from "../../assets/images/plant1.png";
+import styles from "./SectionPlantInfo.module.css";
 import CustomButton from "../CustomButton/CustomButton";
-import { toast } from "react-toastify"; // Importe a função de toast
+import { toast } from "react-toastify";
 
 interface Plant {
   _id: string;
@@ -74,6 +75,9 @@ const SectionPlantInfo: React.FC = () => {
         <img
           src={`http://localhost:8080/images/${plant.imgUrl}`}
           alt={plant.name}
+          onError={(e) => {
+            e.currentTarget.src = defaultImg;
+          }}
         />
       </div>
       <div className={styles.infoProduct}>

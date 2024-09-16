@@ -55,3 +55,48 @@
 .goHome:hover {
   background-color: var(--avacado);
 }
+
+.or {
+  padding-top: 2%;
+  padding-bottom: 1%;
+}
+
+.signedOutButton button {
+  color: var(--wisper);
+  background-color: var(--lunar-green);
+  max-width: 80px;
+  max-height: 40px;
+  text-decoration: none;
+  font-size: 1.6rem;
+  font-weight: normal;
+  font-family: raleway;
+  padding: 5px 10px;
+  border: 1px solid var(--lunar-green);
+  border-radius: 10px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.signedOutButton:hover {
+  color: var(--lunar-green);
+  border: 1px solid transparent;
+  border-radius: 10px;
+  transform: scale(1.03);
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profileImg {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.profileImg:hover {
+  transform: scale(1.1);
+}

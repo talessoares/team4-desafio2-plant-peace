@@ -46,7 +46,19 @@ function App() {
 
         <Route path="/error" element={<ErrorPage />} />
 
-        <Route path="/notlogged" element={<NotLogged />} />
+        <Route
+          path="/notlogged"
+          element={
+            <>
+              <SignedIn>
+                <Navigate to="/" />{" "}
+              </SignedIn>
+              <SignedOut>
+                <NotLogged />{" "}
+              </SignedOut>
+            </>
+          }
+        />
       </Routes>
 
       <Footer />
