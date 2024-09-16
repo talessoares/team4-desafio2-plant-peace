@@ -82,6 +82,10 @@
   cursor: pointer;
 }
 
+.features {
+  margin-top: 5%;
+}
+
 .features,
 .description {
   margin-bottom: 24px;

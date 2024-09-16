@@ -87,13 +87,11 @@ const SectionPlantInfo: React.FC = () => {
         <p className={styles.price}>
           {plant.isInSale && plant.discountPercentage > 0 ? (
             <>
-              <span className={styles.discountedPrice}>
-                R${discountedPrice}
-              </span>
-              <span className={styles.originalPrice}>R${originalPrice}</span>
+              <span className={styles.discountedPrice}>${discountedPrice}</span>
+              <span className={styles.originalPrice}>${originalPrice}</span>
             </>
           ) : (
-            <>Preço: R${price.toFixed(2)}</>
+            <>${price.toFixed(2)}</>
           )}
         </p>
         <CustomButton
@@ -104,7 +102,7 @@ const SectionPlantInfo: React.FC = () => {
         <div className={styles.features}>
           <h3>Features</h3>
           <ul>
-            {plant.features.split(",").map((feature, index) => (
+            {plant.features.split(". ").map((feature, index) => (
               <li key={index}>{feature}</li>
             ))}
           </ul>
