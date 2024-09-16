@@ -5,13 +5,18 @@ import styles from './CustomButton.module.css';
 interface CustomButtonProps {
   text: string;
   to: string;
+  onClick?: () => void;
 }
 
-const CustomButton: React.FC<CustomButtonProps> = ({ text, to }) => {
+const CustomButton: React.FC<CustomButtonProps> = ({ text, to, onClick }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(to);
+    if (onClick) {
+      onClick();
+    } else {
+      navigate(to);
+    }
   };
 
   return (

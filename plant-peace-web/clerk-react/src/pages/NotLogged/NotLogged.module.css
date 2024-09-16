@@ -1,0 +1,102 @@
+.errorContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: var(--athena-grey);
+  text-align: center;
+}
+
+.errorContent {
+  background: var(--white);
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.errorCode {
+  font-size: 6rem;
+  margin: 0;
+  color: var(--dark);
+}
+
+.errorMessage {
+  font-size: 2.5rem;
+  color: var(--gray);
+}
+
+.gifContainer {
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  position: relative;
+  margin: 2rem 0;
+}
+
+.giphyEmbed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.goHome {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1.5rem;
+  font-size: 1.5rem;
+  color: var(--white);
+  background-color: var(--teak);
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.goHome:hover {
+  background-color: var(--avacado);
+}
+
+.or {
+  padding-top: 2%;
+  padding-bottom: 1%;
+}
+
+.signedOutButton button {
+  color: var(--wisper);
+  background-color: var(--lunar-green);
+  max-width: 80px;
+  max-height: 40px;
+  text-decoration: none;
+  font-size: 1.6rem;
+  font-weight: normal;
+  font-family: raleway;
+  padding: 5px 10px;
+  border: 1px solid var(--lunar-green);
+  border-radius: 10px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.signedOutButton:hover {
+  color: var(--lunar-green);
+  border: 1px solid transparent;
+  border-radius: 10px;
+  transform: scale(1.03);
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profileImg {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.profileImg:hover {
+  transform: scale(1.1);
+}

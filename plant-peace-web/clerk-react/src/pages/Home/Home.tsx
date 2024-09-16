@@ -1,5 +1,3 @@
-import React from "react";
-
 import GreenSidePromoSection from "../../components/call-to-action/GreenSidePromoSection";
 import SectionSteps from "../../components/SectionSteps/SectionSteps";
 import SectionThreeImages from "../../components/sectionThreeImages/SectionThreeImages";
@@ -40,7 +38,7 @@ const Home = () => {
 
   return (
     <div className={styles.container}>
-        <GreenSidePromoSection />
+      <GreenSidePromoSection />
       <div className={styles.customButton}>
         <CustomButton text="Shop Now" to="/products" />
       </div>

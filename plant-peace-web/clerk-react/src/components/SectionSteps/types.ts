@@ -1,11 +1,11 @@
-export type CardsProps = {
+export interface CardsProps {
   title: string;
   description: string;
   icon: string;
-};
+}
 
-export type SectionStepsProps = {
+export interface SectionStepsProps {
   title: string;
   description: string;
   cards: CardsProps[];
-};
+}

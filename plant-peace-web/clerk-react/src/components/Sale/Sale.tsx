@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import styles from "./Sale.module.css";
 import CardPlant from "../CardPlant/CardPlant";
 import "@splidejs/react-splide/css";
-import axios from 'axios';
+import axios from "axios";
 
 interface Plant {
   _id: string;
@@ -20,42 +20,44 @@ interface Plant {
 }
 
 const Sale = () => {
-    const [plants, setPlants] = useState<Plant[]>([]);
-    const [loading, setLoading] = useState(true);
-  
-  
-    useEffect(() => {
-      const fetchPlants = async () => {
-        try {
-          const response = await axios.get<Plant[]>(`http://localhost:5000/api/plants`);
-          const data = response.data;
-          console.log("Dados das plantas recebidos:", data);
-          
-          const filteredPlants = data.filter((plant) => plant.isInSale);
-          setPlants(filteredPlants);
-        } catch (error) {
-          console.error("Erro ao buscar plantas:", error);
-        } finally {
-          setLoading(false);
-        }
-      };
-  
-      fetchPlants();
-    }, []);
+  const [plants, setPlants] = useState<Plant[]>([]);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    const fetchPlants = async () => {
+      try {
+        const response = await axios.get<Plant[]>(
+          `http://localhost:5000/api/plants`
+        );
+        const data = response.data;
+        console.log("Dados das plantas recebidos:", data);
 
-    //filter plants that are in sale
-    plants.filter((plant) => plant.isInSale === true);
-  
-    if (loading) {
-      return <div>Carregando plantas...</div>;
-    }
+        const filteredPlants = data.filter(
+          (plant) => plant.discountPercentage > 0
+        );
+
+        setPlants(filteredPlants);
+      } catch (error) {
+        console.error("Erro ao buscar plantas:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPlants();
+  }, []);
+
+  plants.filter((plant) => plant.isInSale === true);
+
+  if (loading) {
+    return <div>Carregando plantas...</div>;
+  }
   return (
     <>
       <div className={styles.container}>
         <div className={styles.title}>
           <h1>
-          <span>   Plants in </span>  Sale
+            <span> Plants in </span> Sale
           </h1>
         </div>
         <Splide
@@ -92,7 +94,7 @@ const Sale = () => {
         </Splide>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Sale
+export default Sale;

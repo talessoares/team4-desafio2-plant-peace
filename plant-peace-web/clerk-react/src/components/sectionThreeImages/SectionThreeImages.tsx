@@ -39,7 +39,7 @@ const SectionThreeImages: React.FC = () => {
         </p>
 
         <div className={styles.customButton}>
-          <CustomButton text="See More Photos" to="#" />
+          <CustomButton text="See More Photos" to="error" />
         </div>
       </div>
     </div>
