@@ -5,7 +5,7 @@ import styles from './CustomButton.module.css';
 interface CustomButtonProps {
   text: string;
   to: string;
-  onClick?: () => void; // Função opcional de callback
+  onClick?: () => void;
 }
 
 const CustomButton: React.FC<CustomButtonProps> = ({ text, to, onClick }) => {

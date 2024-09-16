@@ -6,7 +6,7 @@
   transition: transform 0.3s ease;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Garante que o conteúdo seja distribuído uniformemente */
+  justify-content: space-between;
   margin-bottom: 10%;
 }
 
@@ -15,7 +15,7 @@
 }
 
 .imageContainer {
-  height: 250px; /* Altura fixa para o contêiner da imagem */
+  height: 250px;
   width: 100%;
   overflow: hidden;
   display: flex;
@@ -26,7 +26,7 @@
 .card img {
   max-width: 100%;
 
-  object-fit: fill; /* Garante que a imagem preencha o contêiner sem distorção */
+  object-fit: fill;
 }
 
 .card h1 {
@@ -44,11 +44,10 @@
   font-family: raleway;
   padding-left: 5%;
   padding-top: 1%;
-  margin-bottom: auto; /* Evita que o texto seja puxado para cima */
+  margin-bottom: auto;
 }
 
 .card div {
-
   padding-top: 8%;
   padding-bottom: 10%;
 }

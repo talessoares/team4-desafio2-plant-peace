@@ -17,14 +17,13 @@ interface Plant {
 }
 
 const CardPlant = ({ plant }: { plant: Plant }) => {
-  // Função para calcular o desconto
   const calculateDiscount = (price: string, discountPercentage: number) => {
-    const priceValue = parseFloat(price.replace(/[^0-9.-]+/g, "")); // Remove qualquer símbolo de moeda
+    const priceValue = parseFloat(price.replace(/[^0-9.-]+/g, ""));
     const discountValue = (priceValue * discountPercentage) / 100;
     const discountedPrice = priceValue - discountValue;
     return {
       discountedPrice: discountedPrice.toFixed(2),
-      originalPrice: priceValue.toFixed(2), // Preço original formatado
+      originalPrice: priceValue.toFixed(2),
     };
   };
 
@@ -39,7 +38,6 @@ const CardPlant = ({ plant }: { plant: Plant }) => {
 
   return (
     <Link to={`/plant/${plant.id}`} className={styles.card}>
-      {/* Contêiner da imagem */}
       <div className={styles.imageContainer}>
         <img
           src={`http://localhost:8080/images/${plant.imgUrl}`}

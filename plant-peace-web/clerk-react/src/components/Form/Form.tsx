@@ -36,7 +36,6 @@ const Form = () => {
       const file = event.target.files[0];
       setSelectedImage(file);
 
-      // Create a preview of the selected image
       const reader = new FileReader();
 
       reader.readAsDataURL(file);
@@ -83,7 +82,7 @@ const Form = () => {
       });
 
       const data = await response.json();
-      return data.imageUrl; // Recebe a URL da imagem
+      return data.imageUrl;
     } catch (error) {
       console.error("Erro ao enviar imagem:", error);
       return false;
@@ -94,10 +93,8 @@ const Form = () => {
     clearFormInputs();
     const plantNameInSnakeCase = transformNameToSnakeCase(data.name);
 
-    // Enviar a imagem e os dados da planta simultaneamente
     const imageUploadPromise = uploadImage(plantNameInSnakeCase);
 
-    // Preparar os dados da planta
     const plantData = { ...data, imgUrl: plantNameInSnakeCase + ".png" };
     if (data.discountPercentage !== undefined) {
       plantData.isInSale = true;
@@ -127,7 +124,6 @@ const Form = () => {
       toast.success("Plant registered successfully!", {
         position: "top-left",
         autoClose: 3000,
-        icon: "🌱",
         style: {
           width: "400px",
           height: "100px",
@@ -272,6 +268,7 @@ const Form = () => {
             className={styles["register"]}
             onClick={handleSubmit(onData)}
             type="button"
+            disabled={registerButton}
           >
             Register
           </button>

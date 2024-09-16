@@ -1,9 +1,4 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { SignedIn, SignedOut } from "@clerk/clerk-react";
 import "./App.css";
 import Home from "./pages/Home/Home";

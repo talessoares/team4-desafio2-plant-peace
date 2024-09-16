@@ -27,12 +27,12 @@ const SectionPlantInfo: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   const calculateDiscount = (price: string, discountPercentage: number) => {
-    const priceValue = parseFloat(price.replace(/[^0-9.-]+/g, "")); // Remove qualquer símbolo de moeda
+    const priceValue = parseFloat(price.replace(/[^0-9.-]+/g, ""));
     const discountValue = (priceValue * discountPercentage) / 100;
     const discountedPrice = priceValue - discountValue;
     return {
       discountedPrice: discountedPrice.toFixed(2),
-      originalPrice: priceValue.toFixed(2), // Preço original formatado
+      originalPrice: priceValue.toFixed(2),
     };
   };
 
@@ -45,7 +45,8 @@ const SectionPlantInfo: React.FC = () => {
         );
         setPlant(response.data);
       } catch (error) {
-        setError("Erro ao carregar a planta");
+        console.log("Error fetching plant:", error);
+        setError("Error fetching plant");
       } finally {
         setLoading(false);
       }

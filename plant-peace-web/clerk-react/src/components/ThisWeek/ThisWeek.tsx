@@ -26,10 +26,14 @@ export const ThisWeek: React.FC = () => {
   useEffect(() => {
     const fetchPlants = async () => {
       try {
-        const response = await axios.get<Plant[]>(`http://localhost:5000/api/plants`);
+        const response = await axios.get<Plant[]>(
+          `http://localhost:5000/api/plants`
+        );
         const data = response.data;
         console.log("Dados das plantas recebidos:", data);
-        const filteredPlants = data.filter((plant) => plant.discountPercentage === 0);
+        const filteredPlants = data.filter(
+          (plant) => plant.discountPercentage === 0
+        );
         setPlants(filteredPlants);
       } catch (error) {
         console.error("Erro ao buscar plantas:", error);

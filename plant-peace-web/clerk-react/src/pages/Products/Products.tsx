@@ -33,7 +33,8 @@ const Products: React.FC = () => {
         setPlants(response.data);
         setFilteredPlants(response.data);
       } catch (error) {
-        setError("Erro ao carregar as plantas");
+        console.error("Error searching for plants", error);
+        setError("Error fetching plants");
       } finally {
         setLoading(false);
       }

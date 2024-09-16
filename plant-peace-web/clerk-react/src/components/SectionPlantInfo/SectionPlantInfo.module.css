@@ -134,10 +134,7 @@
   color: #000000;
 }
 
-
-
-
-@media (max-width: 500px), (max-width: 1024px) { 
+@media (max-width: 500px), (max-width: 1024px) {
   .container {
     flex-direction: column;
     margin: 0 20px;
@@ -145,7 +142,6 @@
 
   .infoProduct {
     max-width: 100%;
-    
   }
 
   .title {

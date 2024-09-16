@@ -31,11 +31,10 @@ export const Header = () => {
 
       <div className={styles.profile}>
         <div className={styles.signedOutButton}>
-        <SignedOut>
-          <SignInButton />
-        </SignedOut>
+          <SignedOut>
+            <SignInButton />
+          </SignedOut>
         </div>
-
 
         <SignedIn>
           <div className={styles.profileImg}>

@@ -32,10 +32,7 @@ Retrieves a list of all plants.
     "id": 1,
     "name": "Echinocereus Cacacatu",
     "subtitle": "A Majestic Addition to Your Plant Collection",
-    "label": [
-      "indoor",
-      "cactus"
-    ],
+    "label": ["indoor", "cactus"],
     "price": "$139.99",
     "isInSale": true,
     "discountPercentage": 20,
@@ -43,15 +40,12 @@ Retrieves a list of all plants.
     "description": "Ladyfinger cactus (Echinocereus pentalophus) is also known as Alice, Devil's Fingers, and Dog Tail. It needs bright sunlight, light fertilizer, and is prone to root rot. The root system is shallow and weak. Aphids and mealybugs are also a danger. Avoiding wet soil can help with success with a ladyfinger cactus.",
     "imgUrl": "./assets/plant.png"
   },
-    {
+  {
     "_id": "66db3fc052e9fab4f8b9dcb4",
     "id": 2,
     "name": "Monstera Deliciosa",
     "subtitle": "A Statement Piece for Your Home",
-    "label": [
-      "indoor",
-      "tropical"
-    ],
+    "label": ["indoor", "tropical"],
     "price": "$79.99",
     "isInSale": true,
     "discountPercentage": 15,
@@ -79,10 +73,7 @@ Creates a new plant.
     "id": 1,
     "name": "Echinocereus Cacacatu",
     "subtitle": "A Majestic Addition to Your Plant Collection",
-    "label": [
-      "indoor",
-      "cactus"
-    ],
+    "label": ["indoor", "cactus"],
     "price": "$139.99",
     "isInSale": true,
     "discountPercentage": 20,
@@ -94,7 +85,7 @@ Creates a new plant.
 ```
 
 #### Response
- 
+
 - **Status Code:** `201 Created`
 - **Content-Type:** `application/json`
 
@@ -106,10 +97,7 @@ Creates a new plant.
   "id": 1,
   "name": "Echinocereus Cacacatu",
   "subtitle": "A Majestic Addition to Your Plant Collection",
-  "label": [
-    "indoor",
-    "cactus"
-  ],
+  "label": ["indoor", "cactus"],
   "price": "$139.99",
   "isInSale": true,
   "discountPercentage": 20,
@@ -136,10 +124,7 @@ Retrieves a specific plant by ID.
   "id": 1,
   "name": "Echinocereus Cacacatu",
   "subtitle": "A Majestic Addition to Your Plant Collection",
-  "label": [
-    "indoor",
-    "cactus"
-  ],
+  "label": ["indoor", "cactus"],
   "price": "$139.99",
   "isInSale": true,
   "discountPercentage": 20,
@@ -148,7 +133,6 @@ Retrieves a specific plant by ID.
   "imgUrl": "./assets/plant.png"
 }
 ```
-
 
 ### PUT /plants/:id
 
@@ -160,7 +144,7 @@ Updates a specific plant by ID.
 - **Parameters:** `id` - The ID of the plant to update.
 - **Body:** The updated plant data.
 
-##### Body Request 
+##### Body Request
 
 ##### Example Response
 
@@ -170,10 +154,7 @@ Updates a specific plant by ID.
   "id": 1,
   "name": "Echinocereus Cacacatu",
   "subtitle": "A Majestic Addition to Your Plant Collection",
-  "label": [
-    "indoor",
-    "cactus"
-  ],
+  "label": ["indoor", "cactus"],
   "price": "$139.99",
   "isInSale": true,
   "discountPercentage": 20,
@@ -182,7 +163,6 @@ Updates a specific plant by ID.
   "imgUrl": "./assets/plant.png"
 }
 ```
-
 
 #### Response
 
@@ -194,10 +174,7 @@ Updates a specific plant by ID.
   "id": 1,
   "name": "Echinocereus Cacacatu",
   "subtitle": "A Majestic Addition to Your Plant Collection",
-  "label": [
-    "indoor",
-    "cactus"
-  ],
+  "label": ["indoor", "cactus"],
   "price": "$139.99",
   "isInSale": true,
   "discountPercentage": 20,
@@ -216,6 +193,7 @@ Deletes a specific plant by ID.
 - **Status Code:** `204 No Content`
 - **Content-Type:** `application/json`
 - **Body:** `{}`
+
 ## Error Responses
 
 - **Status Code:** `404 Not Found`

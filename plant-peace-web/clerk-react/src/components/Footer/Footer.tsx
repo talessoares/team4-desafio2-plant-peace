@@ -1,4 +1,3 @@
-// Footer.tsx
 import React from "react";
 import styles from "./Footer.module.css";
 import { Link } from "react-router-dom";
@@ -7,7 +6,6 @@ import logo from "../../assets/icons/logo.svg";
 const Footer: React.FC = () => {
   return (
     <footer className={styles.footer}>
-      {/* Seção Superior */}
       <div className={styles.upperSection}>
         <div className={styles.squareLeft}>
           <h1>Stay Fresh</h1>
@@ -38,12 +36,10 @@ const Footer: React.FC = () => {
         </div>
       </div>
 
-      {/* Linha Divisória */}
       <div className={styles.boxdivider}>
         <hr className={styles.divider} />
       </div>
 
-      {/* Seção Inferior */}
       <div className={styles.lowerSection}>
         <div className={styles.squareLeftdown}>
           <Link to="/">
