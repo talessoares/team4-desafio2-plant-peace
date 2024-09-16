@@ -53,7 +53,9 @@ export const createPlant = async (plant: IPlant): Promise<IPlant> => {
     if (plant.discountPercentage === 0) {
       plant.isInSale = false;
     }
-    
+
+    console.log(plant.discountPercentage);
+
     const newPlant = new Plant(plant);
     return await newPlant.save();
   } catch (error) {

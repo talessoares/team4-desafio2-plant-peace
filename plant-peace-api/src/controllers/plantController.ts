@@ -38,7 +38,11 @@ export const addPlant = async (req: Request, res: Response): Promise<void> => {
     }
   
     console.log("req.body", req.body);
-   
+    
+     //set isInSale to false if discount is 0
+     if (req.body.discountPercentage === 0) {
+      req.body.isInSale = false;
+    }
     
    
     
