@@ -41,7 +41,7 @@ const SectionPlantInfo: React.FC = () => {
       try {
         console.log(`Fetching plant with id: ${id}`);
         const response = await axios.get<Plant>(
-          `https://apiplantpeace-env.eba-dk8vswwi.us-east-2.elasticbeanstalk.com/api/plants/${id}`
+          `http://3.15.153.227:3000/api/plants/${id}`
         );
         setPlant(response.data);
       } catch (error) {
@@ -75,7 +75,7 @@ const SectionPlantInfo: React.FC = () => {
     <section className={styles.container}>
       <div className={styles.image}>
         <img
-          src={`https://apiplantpeace-env.eba-dk8vswwi.us-east-2.elasticbeanstalk.com/images/${plant.imgUrl}`}
+          src={`http://3.15.153.227:3000/images/${plant.imgUrl}`}
           alt={plant.name}
           onError={(e) => {
             e.currentTarget.src = defaultImg;

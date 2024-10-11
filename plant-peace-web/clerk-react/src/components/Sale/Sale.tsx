@@ -27,7 +27,7 @@ const Sale = () => {
     const fetchPlants = async () => {
       try {
         const response = await axios.get<Plant[]>(
-          `https://apiplantpeace-env.eba-dk8vswwi.us-east-2.elasticbeanstalk.com/api/plants`
+          `http://3.15.153.227:3000/api/plants`
         );
         const data = response.data;
         console.log("Dados das plantas recebidos:", data);
