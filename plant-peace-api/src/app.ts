@@ -1,33 +1,26 @@
 import express from "express";
-import upload from "../src/config/multerConfig"; // Ajuste o caminho conforme necessário
-import {
-  getAllPlants,
-  addPlant,
-  deletePlantHandler,
-  updatePlantHandler,
-  getPlantHandler,
-} from "../src/controllers/plantController"; // Ajuste o caminho conforme necessário
+import plantRoutes from "./routes/plantRoutes";
+import connectDB from "./config/db";
+import dotenv from "dotenv";
+import cors from "cors";
+import multer from "multer";
+import path from "path";
+
+dotenv.config();
 
 const app = express();
 
-// Configuração do CORS
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Content-Type");
-  next();
-});
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
-// Supondo que você esteja usando JSON
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// Definição das rotas
-app.get("/api/plants", getAllPlants);
-app.post("/api/plants", addPlant);
-app.delete("/api/plants/:id", deletePlantHandler);
-app.put("/api/plants/:id", updatePlantHandler);
-app.get("/api/plants/:id", getPlantHandler);
+connectDB();
 
-// Outros middlewares ou configurações podem ser adicionados aqui
+app.use("/api", plantRoutes);
 
-export default app; // Exporta o app
+export default app;
