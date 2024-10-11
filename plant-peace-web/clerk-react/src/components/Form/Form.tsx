@@ -100,7 +100,7 @@ const Form = () => {
       plantData.isInSale = true;
     }
 
-    const plantDataPromise = fetch("http://localhost:5000/api/plants", {
+    const plantDataPromise = fetch("https://apiplantpeace-env.eba-dk8vswwi.us-east-2.elasticbeanstalk.com/api/plants", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

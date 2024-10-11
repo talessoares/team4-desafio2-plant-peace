@@ -28,7 +28,7 @@ const Products: React.FC = () => {
     const fetchPlants = async () => {
       try {
         const response = await axios.get<Plant[]>(
-          "http://localhost:5000/api/plants"
+          "https://apiplantpeace-env.eba-dk8vswwi.us-east-2.elasticbeanstalk.com/api/plants"
         );
         setPlants(response.data);
         setFilteredPlants(response.data);
