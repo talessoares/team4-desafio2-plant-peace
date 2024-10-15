@@ -17,21 +17,21 @@ const Footer: React.FC = () => {
         <div className={styles.squaresRight}>
           <div className={styles.square1}>
             <h2>Links</h2>
-            <a href="/aboutus">About Us</a>
+            <Link to="/aboutus">About Us</Link>
             <br />
-            <a href="/products">Product</a>
+            <Link to="/products">Product</Link>
             <br></br>
-            <a href="/error">Blogs</a>
+            <Link to="/error">Blogs</Link>
           </div>
 
           <div className={styles.square2}>
             <h2>Community</h2>
 
-            <a href="/aboutus">About Us</a>
+            <Link to="/aboutus">About Us</Link>
             <br />
-            <a href="/products">Product</a>
+            <Link to="/products">Product</Link>
             <br></br>
-            <a href="/error">Blogs</a>
+            <Link to="/error">Blogs</Link>
           </div>
         </div>
       </div>

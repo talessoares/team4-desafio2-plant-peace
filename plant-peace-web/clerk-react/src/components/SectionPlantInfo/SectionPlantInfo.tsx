@@ -71,11 +71,14 @@ const SectionPlantInfo: React.FC = () => {
     console.log(`You bought ${plant.name} for $${discountedPrice}`);
   };
 
+  const s3BaseUrl = 'http://team4-plant-peace.s3-website.us-east-2.amazonaws.com/';
+  const imgUrl = `${s3BaseUrl}${plant.imgUrl}`;
+
   return (
     <section className={styles.container}>
       <div className={styles.image}>
         <img
-          src={`http://3.15.153.227:3000/images/${plant.imgUrl}`}
+          src={imgUrl}
           alt={plant.name}
           onError={(e) => {
             e.currentTarget.src = defaultImg;

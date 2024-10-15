@@ -23,7 +23,9 @@ export const Header = () => {
 
         <nav className={styles.navLinks}>
           <Link to="/">Home</Link>
-          <Link to="/register">Register</Link>
+          <SignedIn>
+            <Link to="/register">Register</Link>
+          </SignedIn>
           <Link to="/products">Products</Link>
           <Link to="/aboutus">About Us</Link>
         </nav>
