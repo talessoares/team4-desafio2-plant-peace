@@ -24,11 +24,10 @@ const Sale = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const api = import.meta.env.VITE_REACT_APP_AWS_API;
     const fetchPlants = async () => {
       try {
-        const response = await axios.get<Plant[]>(
-          `http://localhost:5000/api/plants`
-        );
+        const response = await axios.get<Plant[]>(`${api}:5000/api/plants`);
         const data = response.data;
         console.log("Dados das plantas recebidos:", data);
 

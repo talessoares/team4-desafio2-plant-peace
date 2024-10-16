@@ -36,11 +36,14 @@ const CardPlant = ({ plant }: { plant: Plant }) => {
       ? calculateDiscount(plant.price, plant.discountPercentage)
       : { discountedPrice: plant.price, originalPrice: "" };
 
+  const imagesS3 = import.meta.env.VITE_REACT_APP_IMAGES_S3_BUCKET;
+  console.log(`${imagesS3}/${plant.imgUrl}`);
+
   return (
     <Link to={`/plant/${plant.id}`} className={styles.card}>
       <div className={styles.imageContainer}>
         <img
-          src={`http://localhost:8080/images/${plant.imgUrl}`}
+          src={`${imagesS3}/${plant.imgUrl}`}
           alt={plant.name}
           onError={(e) => {
             e.currentTarget.src = defaultImg;

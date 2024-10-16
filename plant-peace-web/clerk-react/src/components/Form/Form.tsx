@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUpload } from "@fortawesome/free-solid-svg-icons";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 interface PlantForm {
   name: string;
   subtitle: string;
@@ -71,20 +72,28 @@ const Form = () => {
   const uploadImage = async (plantName: string) => {
     if (!selectedImage) return;
 
-    const formData = new FormData();
-    formData.append("image", selectedImage);
-    formData.append("filename", plantName);
+    const s3Url = `${
+      import.meta.env.VITE_REACT_APP_IMAGES_S3_BUCKET
+    }/${plantName}.png`;
 
     try {
-      const response = await fetch("http://localhost:5000/api/plants/img", {
-        method: "POST",
-        body: formData,
+      const response = await fetch(s3Url, {
+        method: "PUT",
+        body: selectedImage,
+        headers: {
+          "Content-Type": selectedImage.type,
+        },
       });
 
-      const data = await response.json();
-      return data.imageUrl;
+      if (!response.ok) {
+        throw new Error("Failed to upload image");
+      }
+
+      return s3Url;
     } catch (error) {
       console.error("Erro ao enviar imagem:", error);
+      console.log(s3Url);
+
       return false;
     }
   };
@@ -100,7 +109,9 @@ const Form = () => {
       plantData.isInSale = true;
     }
 
-    const plantDataPromise = fetch("http://localhost:5000/api/plants", {
+    const api = import.meta.env.VITE_REACT_APP_AWS_API;
+
+    const plantDataPromise = fetch(`${api}:5000/api/plants`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

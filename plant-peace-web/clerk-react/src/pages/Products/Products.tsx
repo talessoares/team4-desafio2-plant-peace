@@ -27,9 +27,8 @@ const Products: React.FC = () => {
   useEffect(() => {
     const fetchPlants = async () => {
       try {
-        const response = await axios.get<Plant[]>(
-          "http://localhost:5000/api/plants"
-        );
+        const api = import.meta.env.VITE_REACT_APP_AWS_API;
+        const response = await axios.get<Plant[]>(`${api}:5000/api/plants`);
         setPlants(response.data);
         setFilteredPlants(response.data);
       } catch (error) {

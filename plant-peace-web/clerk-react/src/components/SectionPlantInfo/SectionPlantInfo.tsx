@@ -39,10 +39,9 @@ const SectionPlantInfo: React.FC = () => {
   useEffect(() => {
     const fetchPlant = async () => {
       try {
+        const api = import.meta.env.VITE_REACT_APP_AWS_API;
         console.log(`Fetching plant with id: ${id}`);
-        const response = await axios.get<Plant>(
-          `http://localhost:5000/api/plants/${id}`
-        );
+        const response = await axios.get<Plant>(`${api}:5000/api/plants/${id}`);
         setPlant(response.data);
       } catch (error) {
         console.log("Error fetching plant:", error);
@@ -71,11 +70,13 @@ const SectionPlantInfo: React.FC = () => {
     console.log(`You bought ${plant.name} for $${discountedPrice}`);
   };
 
+  const images = import.meta.env.VITE_REACT_APP_IMAGES_S3_BUCKET;
+
   return (
     <section className={styles.container}>
       <div className={styles.image}>
         <img
-          src={`http://localhost:8080/images/${plant.imgUrl}`}
+          src={`${images}/${plant.imgUrl}`}
           alt={plant.name}
           onError={(e) => {
             e.currentTarget.src = defaultImg;

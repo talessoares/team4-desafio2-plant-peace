@@ -26,9 +26,10 @@ export const ThisWeek: React.FC = () => {
   useEffect(() => {
     const fetchPlants = async () => {
       try {
-        const response = await axios.get<Plant[]>(
-          `http://localhost:5000/api/plants`
-        );
+        const api = import.meta.env.VITE_REACT_APP_AWS_API;
+        const response = await axios.get<Plant[]>(`${api}:5000/api/plants`);
+
+        console.log(response.data);
         const data = response.data;
         console.log("Dados das plantas recebidos:", data);
         const filteredPlants = data.filter(
