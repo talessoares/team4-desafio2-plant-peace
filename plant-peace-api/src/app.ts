@@ -16,7 +16,7 @@ app.use(
       "http://3.144.159.94:5000/api/plants",
       "http://plant-peace-app.s3-website.us-east-2.amazonaws.com",
     ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    methods: ["GET", "POST", "PUT"],
   })
 );
 
