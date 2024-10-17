@@ -86,7 +86,7 @@ export const deletePlantHandler = async (
 ): Promise<void> => {
   console.log("deletePlant controller");
   try {
-    const plantId = parseInt(req.params.id);
+    const plantId = req.params.id;
     console.log("plantId", plantId);
     const deletedPlant = await deletePlant(plantId);
     res.json(deletedPlant);
@@ -104,11 +104,23 @@ export const updatePlantHandler = async (
   res: Response
 ): Promise<void> => {
   console.log("updatePlant controller");
+
   try {
-    const plantId = parseInt(req.params.id);
+    const plantId = req.params.id; // Obtendo o ID da URL
+
+    // Verifica se o ID é fornecido
+    if (!plantId || typeof plantId !== "string") {
+      res.status(400).json({ message: "Invalid plant ID" });
+      return;
+    }
+
+    // Chama a função de atualização
     const updatedPlant = await updatePlant(plantId, req.body);
-    res.json(updatedPlant);
+
+    // Retorna o resultado da atualização
+    res.status(200).json(updatedPlant);
   } catch (error) {
+    // Tratamento de erro
     if (error instanceof Error) {
       res.status(400).json({ message: error.message });
     } else {

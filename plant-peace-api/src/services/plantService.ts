@@ -79,7 +79,7 @@ export const verifyIfPlantExists = async (
   }
 };
 
-export const deletePlant = async (plantId: number): Promise<IPlant> => {
+export const deletePlant = async (plantId: string): Promise<IPlant> => {
   console.log("deletePlant service");
   try {
     const deletedPlant = await Plant.findOneAndDelete({ id: plantId });
@@ -94,16 +94,30 @@ export const deletePlant = async (plantId: number): Promise<IPlant> => {
 };
 
 export const updatePlant = async (
-  plantId: number,
-  plant: IPlant
+  plantId: string,
+  updateData: Partial<IPlant> // Aceita um objeto com dados parciais de IPlant
 ): Promise<IPlant> => {
   console.log("updatePlant service");
+
+  // Validação do plantId
+  if (!plantId || typeof plantId !== "string") {
+    throw new Error(`Invalid plant ID: ${plantId}`);
+  }
+
+  // Certifique-se de que o plantId é uma string
+  const stringPlantId = String(plantId);
+  console.log(`Attempting to update plant with ID: ${stringPlantId}`);
+
   try {
-    const updatedPlant = await Plant.findOneAndUpdate({ id: plantId }, plant, {
-      new: true,
-    });
+    // Encontra a planta e atualiza com os dados fornecidos
+    const updatedPlant = await Plant.findOneAndUpdate(
+      { id: stringPlantId }, // Aqui você deve ter certeza de que 'id' é o campo correto
+      updateData, // Os dados que você quer atualizar
+      { new: true } // Retorna o documento atualizado
+    );
+
     if (!updatedPlant) {
-      throw new Error(`Plant with ID ${plantId} not found`);
+      throw new Error(`Plant with ID ${stringPlantId} not found`);
     }
     return updatedPlant;
   } catch (error) {
