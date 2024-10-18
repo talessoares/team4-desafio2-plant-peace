@@ -106,8 +106,15 @@ export const updatePlantHandler = async (
   console.log("updatePlant controller");
   try {
     const plantId = parseInt(req.params.id);
+
+    if (!plantId || typeof plantId !== "string") {
+      res.status(400).json({ message: "Invalid plant ID" });
+      return;
+    }
+
     const updatedPlant = await updatePlant(plantId, req.body);
-    res.json(updatedPlant);
+
+    res.status(200).json(updatedPlant);
   } catch (error) {
     if (error instanceof Error) {
       res.status(400).json({ message: error.message });

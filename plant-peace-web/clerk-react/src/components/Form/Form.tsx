@@ -71,20 +71,27 @@ const Form = () => {
   const uploadImage = async (plantName: string) => {
     if (!selectedImage) return;
 
-    const formData = new FormData();
-    formData.append("image", selectedImage);
-    formData.append("filename", plantName);
+    const s3Url = `http://website-plant-peace-front.s3-website.us-east-2.amazonaws.com/${plantName}.png`;
 
     try {
-      const response = await fetch("http://localhost:5000/api/plants/img", {
-        method: "POST",
-        body: formData,
+      const response = await fetch(s3Url, {
+        method: "PUT",
+        body: selectedImage,
+        headers: {
+          "Content-Type": selectedImage.type,
+        },
       });
 
-      const data = await response.json();
-      return data.imageUrl;
+      if (!response.ok) {
+        throw new Error(
+          "Erro ao fazer upload da imagem: " + response.statusText
+        );
+      }
+
+      return s3Url;
     } catch (error) {
       console.error("Erro ao enviar imagem:", error);
+      toast.error("Erro ao enviar imagem.");
       return false;
     }
   };
@@ -100,7 +107,7 @@ const Form = () => {
       plantData.isInSale = true;
     }
 
-    const plantDataPromise = fetch("http://localhost:5000/api/plants", {
+    const plantDataPromise = fetch("http://18.118.187.174:3000/api/plants", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

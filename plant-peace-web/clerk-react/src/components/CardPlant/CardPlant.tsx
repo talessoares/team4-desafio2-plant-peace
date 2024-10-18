@@ -36,11 +36,15 @@ const CardPlant = ({ plant }: { plant: Plant }) => {
       ? calculateDiscount(plant.price, plant.discountPercentage)
       : { discountedPrice: plant.price, originalPrice: "" };
 
+  const s3BaseUrl =
+    "http://website-plant-peace-front.s3-website.us-east-2.amazonaws.com";
+  const imgUrl = `${s3BaseUrl}${plant.imgUrl}`;
+
   return (
     <Link to={`/plant/${plant.id}`} className={styles.card}>
       <div className={styles.imageContainer}>
         <img
-          src={`http://localhost:8080/images/${plant.imgUrl}`}
+          src={imgUrl}
           alt={plant.name}
           onError={(e) => {
             e.currentTarget.src = defaultImg;

@@ -41,7 +41,7 @@ const SectionPlantInfo: React.FC = () => {
       try {
         console.log(`Fetching plant with id: ${id}`);
         const response = await axios.get<Plant>(
-          `http://localhost:5000/api/plants/${id}`
+          `http://18.118.187.174:3000/api/plants/${id}`
         );
         setPlant(response.data);
       } catch (error) {
@@ -71,11 +71,15 @@ const SectionPlantInfo: React.FC = () => {
     console.log(`You bought ${plant.name} for $${discountedPrice}`);
   };
 
+  const s3BaseUrl =
+    "http://team4-plant-peace.s3-website.us-east-2.amazonaws.com/";
+  const imgUrl = `${s3BaseUrl}${plant.imgUrl}`;
+
   return (
     <section className={styles.container}>
       <div className={styles.image}>
         <img
-          src={`http://localhost:8080/images/${plant.imgUrl}`}
+          src={imgUrl}
           alt={plant.name}
           onError={(e) => {
             e.currentTarget.src = defaultImg;

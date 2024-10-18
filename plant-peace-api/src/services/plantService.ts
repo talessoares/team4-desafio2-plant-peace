@@ -94,16 +94,27 @@ export const deletePlant = async (plantId: number): Promise<IPlant> => {
 };
 
 export const updatePlant = async (
-  plantId: number,
-  plant: IPlant
+  plantId: string,
+  updateData: Partial<IPlant>
 ): Promise<IPlant> => {
   console.log("updatePlant service");
+
+  if (!plantId || typeof plantId !== "string") {
+    throw new Error(`Invalid plant ID: ${plantId}`);
+  }
+
+  const stringPlantId = String(plantId);
+  console.log(`Attempting to update plant with ID: ${stringPlantId}`);
+
   try {
-    const updatedPlant = await Plant.findOneAndUpdate({ id: plantId }, plant, {
-      new: true,
-    });
+    const updatedPlant = await Plant.findOneAndUpdate(
+      { id: stringPlantId },
+      updateData,
+      { new: true }
+    );
+
     if (!updatedPlant) {
-      throw new Error(`Plant with ID ${plantId} not found`);
+      throw new Error(`Plant with ID ${stringPlantId} not found`);
     }
     return updatedPlant;
   } catch (error) {
