@@ -76,7 +76,7 @@ const Form = () => {
     formData.append("filename", plantName);
 
     try {
-      const response = await fetch("http://localhost:5000/api/plants/img", {
+      const response = await fetch("http://54.225.3.3:5000/api/plants", {
         method: "POST",
         body: formData,
       });
@@ -100,7 +100,7 @@ const Form = () => {
       plantData.isInSale = true;
     }
 
-    const plantDataPromise = fetch("http://localhost:5000/api/plants", {
+    const plantDataPromise = fetch("http://54.225.3.3:5000/api/plants", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
