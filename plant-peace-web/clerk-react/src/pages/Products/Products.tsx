@@ -27,9 +27,8 @@ const Products: React.FC = () => {
   useEffect(() => {
     const fetchPlants = async () => {
       try {
-        const response = await axios.get<Plant[]>(
-          "https://imagensplants.s3.amazonaws.com/images/"
-        );
+       
+        const response = await axios.get<Plant[]>(`http://54.81.215.175:5000/api/plants`);
         setPlants(response.data);
         setFilteredPlants(response.data);
       } catch (error) {
