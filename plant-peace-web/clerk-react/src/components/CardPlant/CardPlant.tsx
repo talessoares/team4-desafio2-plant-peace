@@ -40,7 +40,7 @@ const CardPlant = ({ plant }: { plant: Plant }) => {
     <Link to={`/plant/${plant.id}`} className={styles.card}>
       <div className={styles.imageContainer}>
         <img
-          src={`http://localhost:8080/images/${plant.imgUrl}`}
+          src={`https://imagensplants.s3.amazonaws.com/images/${plant.imgUrl}`}
           alt={plant.name}
           onError={(e) => {
             e.currentTarget.src = defaultImg;

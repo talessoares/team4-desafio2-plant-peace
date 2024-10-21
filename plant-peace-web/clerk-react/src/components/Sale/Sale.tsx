@@ -27,7 +27,7 @@ const Sale = () => {
     const fetchPlants = async () => {
       try {
         const response = await axios.get<Plant[]>(
-          `http://localhost:5000/api/plants`
+          `http://54.81.215.175/api/plants`
         );
         const data = response.data;
         console.log("Dados das plantas recebidos:", data);

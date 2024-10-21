@@ -41,7 +41,7 @@ const SectionPlantInfo: React.FC = () => {
       try {
         console.log(`Fetching plant with id: ${id}`);
         const response = await axios.get<Plant>(
-          `http://localhost:5000/api/plants/${id}`
+          `http://54.81.215.175/api/plants/${id}`
         );
         setPlant(response.data);
       } catch (error) {
