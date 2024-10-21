@@ -79,17 +79,29 @@ export const verifyIfPlantExists = async (
   }
 };
 
-export const deletePlant = async (plantId: string): Promise<IPlant> => {
+export const deletePlant = async (plantId: string): Promise<IPlant | null> => {
   console.log("deletePlant service");
+
   try {
+    // Encontra e deleta a planta pelo seu `id`
     const deletedPlant = await Plant.findOneAndDelete({ id: plantId });
+
+    // Verifica se a planta foi encontrada e deletada
     if (!deletedPlant) {
       throw new Error(`Plant with ID ${plantId} not found`);
     }
-    return deletedPlant;
+
+    return deletedPlant; // Retorna a planta deletada, caso encontrada
   } catch (error) {
+    // Chama o manipulador de erros para logar e lidar com o erro
     handleError(error, "delete plant");
-    throw null;
+
+    // Lança o erro original para que possa ser tratado na camada superior
+    throw new Error(
+      `Failed to delete plant with ID ${plantId}: ${
+        error instanceof Error ? error.message : "Unknown error"
+      }`
+    );
   }
 };
 

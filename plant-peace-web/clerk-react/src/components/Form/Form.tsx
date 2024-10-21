@@ -70,32 +70,32 @@ const Form = () => {
 
   const uploadImage = async (plantName: string) => {
     if (!selectedImage) return;
-  
+
     const s3Url = `https://team4-plant-peace.s3.us-east-2.amazonaws.com/${plantName}.png`;
-  
+
     try {
       const response = await fetch(s3Url, {
-        method: "PUT", // Use PUT para upload
-        body: selectedImage, // Envia o arquivo diretamente
+        method: "PUT",
+        body: selectedImage,
         headers: {
-          "Content-Type": selectedImage.type, // Define o tipo de conteúdo
-          // Adicione cabeçalhos de autorização aqui, se necessário
+          "Content-Type": selectedImage.type,
         },
       });
-  
+
       if (!response.ok) {
-        throw new Error("Erro ao fazer upload da imagem: " + response.statusText);
+        throw new Error(
+          "Erro ao fazer upload da imagem: " + response.statusText
+        );
       }
-  
-      // Retorna a URL da imagem após o upload
-      return s3Url; // Retorna a URL onde a imagem foi salva
+
+      return s3Url;
     } catch (error) {
       console.error("Erro ao enviar imagem:", error);
       toast.error("Erro ao enviar imagem.");
       return false;
     }
   };
-  
+
   const onData = async (data: PlantForm) => {
     clearFormInputs();
     const plantNameInSnakeCase = transformNameToSnakeCase(data.name);
