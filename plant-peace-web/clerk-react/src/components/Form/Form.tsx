@@ -107,7 +107,7 @@ const Form = () => {
       plantData.isInSale = true;
     }
 
-    const plantDataPromise = fetch("http://54.81.215.175:3000/api/plants/", {
+    const plantDataPromise = fetch("http://54.81.10.203:3000/api/plants/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

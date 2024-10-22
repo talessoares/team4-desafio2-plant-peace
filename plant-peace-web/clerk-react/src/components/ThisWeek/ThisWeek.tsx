@@ -27,7 +27,7 @@ export const ThisWeek: React.FC = () => {
     const fetchPlants = async () => {
       try {
         const response = await axios.get<Plant[]>(
-          `http://54.81.215.175:3000/api/plants/`
+          `http://54.81.10.203:3000/api/plants/`
         );
         const data = response.data;
         console.log("Dados das plantas recebidos:", data);

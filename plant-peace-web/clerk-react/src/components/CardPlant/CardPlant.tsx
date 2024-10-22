@@ -37,7 +37,7 @@ const CardPlant = ({ plant }: { plant: Plant }) => {
       : { discountedPrice: plant.price, originalPrice: "" };
 
   // URL do S3 
-  const s3BaseUrl = 'http://plantsdweb.s3-website-us-east-1.amazonaws.com/';
+  const s3BaseUrl = 'http://plantsdweb.s3-website-us-east-1.amazonaws.com/'; 
   const imgUrl = `${s3BaseUrl}${plant.imgUrl}`;
 
   return (
